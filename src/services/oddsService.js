@@ -29,11 +29,15 @@ async function getSports() {
   }
 }
 async function getEvents() {
+  var end = new Date();
+  end.setUTCHours(23,59,59);
+  console.log(end.toISOString().slice(0, -5)+'Z');
   try {
-    const res = await fetch(`${BASE_URL}/sports/basketball_nba/events?apiKey=${apiKey}`, {
+    const res = await fetch(`${BASE_URL}/sports/basketball_nba/events?apiKey=${apiKey}&commenceTimeTo=${end.toISOString().slice(0, -5)+'Z'}`, {
       headers: { 'Content-Type': 'application/json' }
     })
     const json = await res.json()
+    console.log(json);
     if (json.err) throw new Error(json.err)
       return json
   } catch (err) {

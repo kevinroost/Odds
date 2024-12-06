@@ -14,61 +14,51 @@ import EventOdds from '../../components/EventOdds/EventOdds'
 const Odds = ({events, setEvents, testMode, setFinalString, targetEvents, setTargetEvents, fetchProps}) => {
   // const [sports, setSports] = useState([])
   const [predictions, setPredictions] = useState([])
+  const [loadingProps, setLoadingProps] = useState(false)
 
   
   const markets = ['player_points_alternate', 'player_points', 'player_rebounds', 'player_assists', 'player_threes', 'player_blocks', 'player_steals', 'player_turnovers'].join(',')
   
   
   const getEvents = async () => {
-    console.log(events);
-    console.log(targetEvents);
+
     if (!testMode) {
       
       const fetchEvents = async () => {
-        setEvents([])
-        setTargetEvents([])
+        await setEvents([])
+        await setTargetEvents([])
+        await setPredictions([])
         const eventData = await oddsService.getEvents()
         setEvents(eventData)
       }
-      fetchEvents()
+      await fetchEvents()
       // fetchPropsFromEventID()
     } else {
-      setEvents(testData)
+      await setEvents(testData)
     }  
-    setTargetEvents(events.map ((e) => {
-      return e.id
-    }))
   }
   
   
-  // useEffect(() => {
-  //   if (!testMode) {
-      
-  //     const fetchEvents = async () => {
-  //       const eventData = await oddsService.getEvents()
-  //       setEvents(eventData)
-  //     }
-  //     fetchEvents()
-  //     // fetchPropsFromEventID()
-  //   } else {
-  //     setEvents(testData)
-  //   }  
-  //   setTargetEvents(events.map ((e) => {
-  //     return e.id
-  //   }))
-  //   console.log('TARGET', targetEvents);
-  // }, [events])
+  useEffect(() => {
 
+    setTargetEvents(events.map ((e) => {
+      return e.id
+    }))
+    
+  }, [events])
 
   const getProps = () => {
     const fetchProps = async (eventIdArr, markets) => {
+      await setLoadingProps(true)
       const propsData = await oddsService.getPlayerProps(eventIdArr, markets)
       setPredictions(propsData)
+      setLoadingProps(false)
     }
+    
     if (!testMode) {
       if (targetEvents.length > 0) {
-          fetchProps(targetEvents.slice(0, 1), markets.split(',')[0])
-        }
+        fetchProps(targetEvents, markets.split(','))
+      }
     } else {
       setPredictions(events)
     }
@@ -82,15 +72,15 @@ const Odds = ({events, setEvents, testMode, setFinalString, targetEvents, setTar
     })
     console.log('FINAL',result);
     setFinalString(result)
-    // let csvContent = "data:text/csv;charset=utf-8," 
-    // + result;
-    // var encodedUri = encodeURI(csvContent);
-    // var link = document.createElement("a");
-    // link.setAttribute("href", encodedUri);
-    // link.setAttribute("download", "api_data.csv");
-    // document.body.appendChild(link); // Required for FF
+    let csvContent = "data:text/csv;charset=utf-8," 
+    + result;
+    var encodedUri = encodeURI(csvContent);
+    var link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "api_data.csv");
+    document.body.appendChild(link); // Required for FF
     
-    // link.click();
+    link.click();
   }
   
   
@@ -101,8 +91,6 @@ const Odds = ({events, setEvents, testMode, setFinalString, targetEvents, setTar
         <button onClick={() => getEvents()}>GIMME EVENTS</button>
       </div>
       {
-        events
-        ?
         <div className='check-boxes'>
           {events.map((event, i) => (
             <EventOdds 
@@ -116,25 +104,26 @@ const Odds = ({events, setEvents, testMode, setFinalString, targetEvents, setTar
           ))}
           <button onClick={() => getProps()}>FETCH PROPS</button>
         </div>
-        
-        :
-        <p>...loading</p>
+  
       }
       {
         predictions && predictions.length > 0
         ? 
-        <>
-          <p>
-            Fetched props for events:
-          </p>
-          {predictions.map((pro) => {
-            console.log('iddddd', pro);
-            return <p key={pro.id}>{pro.id}</p>
-          })}
-          <button onClick={() => createString()}>CREATE STRING</button>
-        </>
-          :
-        <h3>NO PREDICTIONS</h3>
+          <>
+            <p>
+              Fetched props for events:
+            </p>
+            {/* <p>...fetching props {predictions.length} / {targetEvents.length}</p> */}
+            {predictions.map((pro) => {
+              return <>
+                <p key={pro.id}>{pro.id}</p>
+              </>
+            })}
+            <button onClick={() => createString()}>CREATE STRING</button>
+          </>
+        
+        :
+            !loadingProps?<h3>NO PREDICTIONS</h3>:<h3>fetching....</h3>
       }
     </main>
   )
