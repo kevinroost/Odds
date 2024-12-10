@@ -7,9 +7,9 @@ const BASE_URL = `https://api.the-odds-api.com/v4`
 //havoc's key
 // const apiKey = `0d4bdd3400ac289023c53778646df18e`
 //jake's key
-// const apiKey = '1f6657e3afe6ab20d188a25cf5ac2705'
+const apiKey = '1f6657e3afe6ab20d188a25cf5ac2705'
 //derek's key
-const apiKey = 'aca95eb6712f2d9f14266215b3daaac6'
+// const apiKey = 'aca95eb6712f2d9f14266215b3daaac6'
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -30,10 +30,11 @@ async function getSports() {
 }
 async function getEvents() {
   var end = new Date();
-  end.setUTCHours(23,59,59);
+  end.setHours(18,59,59);
   console.log(end.toISOString().slice(0, -5)+'Z');
+  //&commenceTimeTo=${end.toISOString().slice(0, -5)+'Z'
   try {
-    const res = await fetch(`${BASE_URL}/sports/basketball_nba/events?apiKey=${apiKey}&commenceTimeTo=${end.toISOString().slice(0, -5)+'Z'}`, {
+    const res = await fetch(`${BASE_URL}/sports/basketball_nba/events?apiKey=${apiKey}`, {
       headers: { 'Content-Type': 'application/json' }
     })
     const json = await res.json()
