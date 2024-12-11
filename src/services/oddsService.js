@@ -34,7 +34,7 @@ async function getEvents() {
   console.log(end.toISOString().slice(0, -5)+'Z');
   //&commenceTimeTo=${end.toISOString().slice(0, -5)+'Z'}
   try {
-    const res = await fetch(`${BASE_URL}/sports/basketball_nba/events?apiKey=${apiKey}`, {
+    const res = await fetch(`${BASE_URL}/sports/basketball_nba/events?apiKey=${apiKey}&commenceTimeTo=${end.toISOString().slice(0, -5)+'Z'}`, {
       headers: { 'Content-Type': 'application/json' }
     })
     const json = await res.json()
