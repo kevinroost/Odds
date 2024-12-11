@@ -1,7 +1,7 @@
 import './EventOdds.css'
 import { useState } from 'react'
 
-const EventOdds = ({event, events, targetEvents, setTargetEvents}) => {
+const EventOdds = ({event, targetEvents, setTargetEvents}) => {
   const [isChecked, setIsChecked] = useState(true)
   // targetEvents.includes(event.id) ? true : false
   const handleCheck = () => {

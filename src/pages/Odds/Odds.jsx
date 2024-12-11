@@ -11,45 +11,14 @@ import './Odds.css'
 // components
 import EventOdds from '../../components/EventOdds/EventOdds'
 
-const Odds = ({events, setEvents, testMode, setFinalString, targetEvents, setTargetEvents, fetchProps}) => {
+const Odds = ({events, setEvents, testMode, setFinalString, targetEvents, setTargetEvents, getEvents, predictions, setPredictions, reset}) => {
   // const [sports, setSports] = useState([])
-  const [predictions, setPredictions] = useState([])
   const [loadingProps, setLoadingProps] = useState(false)
 
   
   const markets = ['player_points_alternate', 'player_points', 'player_rebounds', 'player_assists', 'player_threes', 'player_blocks', 'player_steals', 'player_turnovers'].join(',')
   
-  const reset = () => {
-    setEvents([])
-    setTargetEvents([])
-    setPredictions([])
-  }
   
-  const getEvents = async () => {
-
-    if (!testMode) {
-      
-      const fetchEvents = async () => {
-        await reset()
-        const eventData = await oddsService.getEvents()
-        setEvents(eventData)
-      }
-      await fetchEvents()
-      // fetchPropsFromEventID()
-    } else {
-      await setEvents(testData)
-    }  
-  }
-  
-  
-  useEffect(() => {
-
-    setTargetEvents(events.map ((e) => {
-      return e.id
-    }))
-    
-  }, [events, setTargetEvents])
-
   const getProps = () => {
     const fetchProps = async (eventIdArr, markets) => {
       await setLoadingProps(true)
@@ -85,6 +54,17 @@ const Odds = ({events, setEvents, testMode, setFinalString, targetEvents, setTar
     
     link.click();
   }
+
+
+  useEffect(() => {
+
+    setTargetEvents(events.map((e) => {
+      return e.id
+    }))
+    
+  }, [events, setTargetEvents])
+
+  
   
   
   return (
@@ -93,15 +73,11 @@ const Odds = ({events, setEvents, testMode, setFinalString, targetEvents, setTar
       <div>
         <button onClick={() => getEvents()}>GIMME EVENTS</button>
       </div>
-      <div>
-        <button onClick={() => reset()}>RESET</button>
-      </div>
       
       <div className='check-boxes'>
         {events.map((event, i) => (
           <EventOdds 
             event={event}
-            events={events}
             setEvents={setEvents}
             key={i}
             targetEvents={targetEvents}

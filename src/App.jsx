@@ -1,5 +1,5 @@
 // npm modules
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { Routes, Route } from 'react-router-dom'
 
 import * as oddsService from './services/oddsService'
@@ -28,7 +28,8 @@ function App() {
   const [events, setEvents] = useState([])
   const [targetEvents, setTargetEvents] = useState([])
   const [finalString, setFinalString] = useState([])
-  
+  const [predictions, setPredictions] = useState([])
+
 
   const testMode = false
 
@@ -44,21 +45,31 @@ function App() {
     setUser(authService.getUser())
   }
 
+  const reset = () => {
+    setEvents([])
+    setTargetEvents([])
+    setPredictions([])
+  }
 
-  // useEffect(() => {
-  //   if (!testMode) {
+  const getEvents = useCallback(async () => {
+
+    if (!testMode) {
       
-  //     const fetchEvents = async () => {
-  //       const eventData = await oddsService.getEvents()
-  //       setEvents(eventData)
-  //     }
-  //     fetchEvents()
-  //     // fetchPropsFromEventID()
-  //   } else {
-  //     setEvents(testData)
-  //   }  
-  // }, [testMode])
+      const fetchEvents = async () => {
+        await reset()
+        const eventData = await oddsService.getEvents()
+        setEvents(eventData)
+      }
+      await fetchEvents()
+      // fetchPropsFromEventID()
+    } else {
+      await setEvents(testData)
+    }  
+  }, [testMode])
 
+  useEffect(() => {
+    getEvents()
+  }, [getEvents])
 
   return (
     <>
@@ -72,10 +83,14 @@ function App() {
               testMode={testMode}
               events={events}
               setEvents={setEvents}
+              getEvents={getEvents}
               finalString={finalString}
               setFinalString={setFinalString}
               targetEvents={targetEvents}
               setTargetEvents={setTargetEvents}
+              predictions={predictions}
+              setPredictions={setPredictions}
+              reset={reset}
               // fetchEvents={fetchEvents}
               />
           } 
