@@ -19,15 +19,18 @@ const Odds = ({events, setEvents, testMode, setFinalString, targetEvents, setTar
   
   const markets = ['player_points_alternate', 'player_points', 'player_rebounds', 'player_assists', 'player_threes', 'player_blocks', 'player_steals', 'player_turnovers'].join(',')
   
+  const reset = () => {
+    setEvents([])
+    setTargetEvents([])
+    setPredictions([])
+  }
   
   const getEvents = async () => {
 
     if (!testMode) {
       
       const fetchEvents = async () => {
-        await setEvents([])
-        await setTargetEvents([])
-        await setPredictions([])
+        await reset()
         const eventData = await oddsService.getEvents()
         setEvents(eventData)
       }
@@ -45,7 +48,7 @@ const Odds = ({events, setEvents, testMode, setFinalString, targetEvents, setTar
       return e.id
     }))
     
-  }, [events])
+  }, [events, setTargetEvents])
 
   const getProps = () => {
     const fetchProps = async (eventIdArr, markets) => {
@@ -90,22 +93,25 @@ const Odds = ({events, setEvents, testMode, setFinalString, targetEvents, setTar
       <div>
         <button onClick={() => getEvents()}>GIMME EVENTS</button>
       </div>
-      {
-        <div className='check-boxes'>
-          {events.map((event, i) => (
-            <EventOdds 
-              event={event}
-              events={events}
-              setEvents={setEvents}
-              key={i}
-              targetEvents={targetEvents}
-              setTargetEvents={setTargetEvents}
-              />
-          ))}
-          <button onClick={() => getProps()}>FETCH PROPS</button>
-        </div>
+      <div>
+        <button onClick={() => reset()}>RESET</button>
+      </div>
+      
+      <div className='check-boxes'>
+        {events.map((event, i) => (
+          <EventOdds 
+            event={event}
+            events={events}
+            setEvents={setEvents}
+            key={i}
+            targetEvents={targetEvents}
+            setTargetEvents={setTargetEvents}
+            />
+        ))}
+      </div>
+      <button onClick={() => getProps()}>FETCH PROPS</button>
   
-      }
+      
       {
         predictions && predictions.length > 0
         ? 
