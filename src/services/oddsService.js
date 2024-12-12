@@ -28,13 +28,14 @@ async function getSports() {
     throw new Error(err)
   }
 }
-async function getEvents() {
+async function getEvents(today) {
   var end = new Date();
   end.setHours(23,59,59);
   console.log(end.toISOString().slice(0, -5)+'Z');
   //&commenceTimeTo=${end.toISOString().slice(0, -5)+'Z'}
+  const commencementFilter = today?`&commenceTimeTo=${end.toISOString().slice(0, -5)+'Z'}`:``
   try {
-    const res = await fetch(`${BASE_URL}/sports/basketball_nba/events?apiKey=${apiKey}&commenceTimeTo=${end.toISOString().slice(0, -5)+'Z'}`, {
+    const res = await fetch(`${BASE_URL}/sports/basketball_nba/events?apiKey=${apiKey}` + `${commencementFilter}`, {
       headers: { 'Content-Type': 'application/json' }
     })
     const json = await res.json()

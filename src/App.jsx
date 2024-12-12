@@ -29,6 +29,7 @@ function App() {
   const [targetEvents, setTargetEvents] = useState([])
   const [finalString, setFinalString] = useState([])
   const [predictions, setPredictions] = useState([])
+  const [today, setToday] = useState(true)
 
 
   const testMode = false
@@ -57,7 +58,7 @@ function App() {
       
       const fetchEvents = async () => {
         await reset()
-        const eventData = await oddsService.getEvents()
+        const eventData = await oddsService.getEvents(today)
         setEvents(eventData)
       }
       await fetchEvents()
@@ -65,7 +66,7 @@ function App() {
     } else {
       await setEvents(testData)
     }  
-  }, [testMode])
+  }, [testMode, today])
 
   useEffect(() => {
     getEvents()
@@ -79,6 +80,8 @@ function App() {
           path="/" 
           element={
             <Odds 
+              today={today}
+              setToday={setToday}
               testData={testData}
               testMode={testMode}
               events={events}
