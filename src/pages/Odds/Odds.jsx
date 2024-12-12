@@ -11,7 +11,7 @@ import './Odds.css'
 // components
 import EventOdds from '../../components/EventOdds/EventOdds'
 
-const Odds = ({events, setEvents, testMode, setFinalString, targetEvents, setTargetEvents, getEvents, predictions, setPredictions, setToday}) => {
+const Odds = ({events, setEvents, testMode, setFinalString, targetEvents, setTargetEvents, predictions, setPredictions, today, setToday}) => {
   // const [sports, setSports] = useState([])
   const [loadingProps, setLoadingProps] = useState(false)
 
@@ -73,6 +73,11 @@ const Odds = ({events, setEvents, testMode, setFinalString, targetEvents, setTar
       <div>
         <button onClick={() => setToday(true)}>TODAY'S EVENTS</button>
         <button onClick={() => setToday(false)}>ALL EVENTS</button>
+      </div>
+      <div>
+        {
+          <p>Returning {today?`today's`:`all`} events</p>
+        }
       </div>
       
       <div className='check-boxes'>
