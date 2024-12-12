@@ -14,7 +14,7 @@ const EventOdds = ({event, targetEvents, setTargetEvents}) => {
   return(
     <div className="check-box-option">
       <input type="checkbox" id={event.id} name={event.id} value={event.id} onChange={() => handleCheck()} checked={isChecked} />
-      <label htmlFor={event.id}>{`${event.away_team} @ ${event.home_team} ${event.commence_time}`}</label>
+      <label htmlFor={event.id}>{`${event.away_team} @ ${event.home_team}`}</label>
     </div>
   )
 }
