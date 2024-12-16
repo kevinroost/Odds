@@ -9,14 +9,16 @@ import testData from '../../data/testData'
 import './Odds.css'
 
 // components
-import EventOdds from '../../components/EventOdds/EventOdds'
+import Event from '../../components/EventComp/EventComp'
 
 const Odds = ({events, setEvents, testMode, setFinalString, targetEvents, setTargetEvents, predictions, setPredictions, today, setToday}) => {
   // const [sports, setSports] = useState([])
   const [loadingProps, setLoadingProps] = useState(false)
 
   
-  const markets = ['player_points_alternate', 'player_points', 'player_rebounds', 'player_assists', 'player_threes', 'player_blocks', 'player_steals', 'player_turnovers'].join(',')
+  const markets = ['player_points_alternate'].join(',')
+
+  //, 'player_points', 'player_rebounds', 'player_assists', 'player_threes', 'player_blocks', 'player_steals', 'player_turnovers'
   
   
   const getProps = () => {
@@ -25,7 +27,6 @@ const Odds = ({events, setEvents, testMode, setFinalString, targetEvents, setTar
       const propsData = await oddsService.getPlayerProps(eventIdArr, markets)
       setPredictions(propsData)
       setLoadingProps(false)
-      console.log(predictions);
     }
     
     if (!testMode) {
@@ -35,6 +36,7 @@ const Odds = ({events, setEvents, testMode, setFinalString, targetEvents, setTar
     } else {
       setPredictions(events)
     }
+    console.log(predictions);
   }
   
   const createString = () => {
@@ -45,15 +47,15 @@ const Odds = ({events, setEvents, testMode, setFinalString, targetEvents, setTar
     })
     console.log('FINAL',result);
     setFinalString(result)
-    // let csvContent = "data:text/csv;charset=utf-8," 
-    // + result;
-    // var encodedUri = encodeURI(csvContent);
-    // var link = document.createElement("a");
-    // link.setAttribute("href", encodedUri);
-    // link.setAttribute("download", "api_data.csv");
-    // document.body.appendChild(link); // Required for FF
+    let csvContent = "data:text/csv;charset=utf-8," 
+    + result;
+    var encodedUri = encodeURI(csvContent);
+    var link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "api_data.csv");
+    document.body.appendChild(link); // Required for FF
     
-    // link.click();
+    link.click();
   }
 
 
@@ -83,7 +85,7 @@ const Odds = ({events, setEvents, testMode, setFinalString, targetEvents, setTar
       
       <div className='check-boxes'>
         {events.map((event, i) => (
-          <EventOdds 
+          <Event 
             event={event}
             setEvents={setEvents}
             key={i}
@@ -104,9 +106,7 @@ const Odds = ({events, setEvents, testMode, setFinalString, targetEvents, setTar
             </p>
             {/* <p>...fetching props {predictions.length} / {targetEvents.length}</p> */}
             {predictions.map((pro) => {
-              return <>
-                <p key={pro.id}>{pro.id}</p>
-              </>
+              return <p key={pro.id}>{pro.id}</p>
             })}
             <button onClick={() => createString()}>CREATE STRING</button>
           </>

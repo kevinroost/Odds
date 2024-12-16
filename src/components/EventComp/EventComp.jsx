@@ -1,7 +1,7 @@
-import './EventOdds.css'
+import './EventComp.css'
 import { useState } from 'react'
 
-const EventOdds = ({event, targetEvents, setTargetEvents}) => {
+const Event = ({event, targetEvents, setTargetEvents}) => {
   const [isChecked, setIsChecked] = useState(true)
   // targetEvents.includes(event.id) ? true : false
   const handleCheck = () => {
@@ -9,6 +9,7 @@ const EventOdds = ({event, targetEvents, setTargetEvents}) => {
     setTargetEvents(targetEvents.filter((e) => e!==event.id)):
     setTargetEvents([...targetEvents, event.id])
     setIsChecked(!isChecked)
+    console.log(targetEvents);
   }
 
   return(
@@ -19,4 +20,4 @@ const EventOdds = ({event, targetEvents, setTargetEvents}) => {
   )
 }
 
-export default EventOdds
+export default Event

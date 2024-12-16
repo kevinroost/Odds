@@ -31,7 +31,6 @@ async function getSports() {
 async function getEvents(today) {
   var end = new Date();
   end.setHours(23,59,59);
-  console.log(end.toISOString().slice(0, -5)+'Z');
   //&commenceTimeTo=${end.toISOString().slice(0, -5)+'Z'}
   const commencementFilter = today?`&commenceTimeTo=${end.toISOString().slice(0, -5)+'Z'}`:``
   try {
@@ -39,7 +38,7 @@ async function getEvents(today) {
       headers: { 'Content-Type': 'application/json' }
     })
     const json = await res.json()
-    console.log(json);
+
     if (json.err) throw new Error(json.err)
       return json
   } catch (err) {
