@@ -24,7 +24,7 @@ const deconstructEventObj = (eventObj) => {
         Object.keys(outcome).map((i) => {
           outcomeArr.push(outcome[i])
         })
-        resultStr = resultStr + `${bm.title},` + `${translate(market.key)},` + outcomeArr.join(',') + '\n'
+        resultStr = resultStr + `${bm.title},` + `${translate(market.key)},` + outcomeArr.join(',') + (market.key === 'player_points_alternate' ? ',alt' : ',now') + '\n'
       })
     })
   })

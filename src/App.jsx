@@ -32,6 +32,7 @@ function App() {
   const [finalString, setFinalString] = useState([])
   const [predictions, setPredictions] = useState([])
   const [today, setToday] = useState(true)
+  const [includeAlts, setIncludeAlts] = useState(false)
 
 
   const testMode = false
@@ -99,6 +100,8 @@ function App() {
               predictions={predictions}
               setPredictions={setPredictions}
               reset={reset}
+              includeAlts={includeAlts}
+              setIncludeAlts={setIncludeAlts}
               // fetchEvents={fetchEvents}
               />
           } 

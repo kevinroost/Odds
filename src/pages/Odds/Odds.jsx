@@ -12,7 +12,24 @@ import './Odds.css'
 import Event from '../../components/EventComp/EventComp'
 import Bookmaker from '../../components/Bookmaker/Bookmaker'
 
-const Odds = ({events, setEvents, testMode, setFinalString, targetEvents, setTargetEvents, predictions, setPredictions, today, setToday, bms, desiredBms, setDesiredBms}) => {
+const Odds = (
+  {
+    events, 
+    setEvents, 
+    testMode, 
+    setFinalString, 
+    targetEvents, 
+    setTargetEvents, 
+    predictions, 
+    setPredictions, 
+    today, 
+    setToday, 
+    bms, 
+    desiredBms, 
+    setDesiredBms,
+    includeAlts,
+    setIncludeAlts
+  }) => {
   // const [sports, setSports] = useState([])
   const [loadingProps, setLoadingProps] = useState(false)
 
@@ -38,6 +55,7 @@ const Odds = ({events, setEvents, testMode, setFinalString, targetEvents, setTar
       setPredictions(events)
     }
   }
+  console.log(predictions);
   
   const createString = () => {
     let result = ''
@@ -74,26 +92,22 @@ const Odds = ({events, setEvents, testMode, setFinalString, targetEvents, setTar
     <main>
       <h1>HI MITCHELL AND HUFF</h1>
       <div>
-        <button onClick={() => setToday(true)}>TODAY'S EVENTS</button>
-        <button onClick={() => setToday(false)}>ALL EVENTS</button>
-      </div>
-      <div>
-        {
-          <p>Returning {today?`today's`:`all`} events</p>
-        }
+        <button style={{border: (today?'blue solid 3px':'none')}} onClick={() => setToday(true)}>TODAY'S EVENTS</button>
+        <button style={{border: (!today?'blue solid 3px':'none')}} onClick={() => setToday(false)}>ALL EVENTS</button>
       </div>
       
       <div className='check-boxes'>
         {events.map((event, i) => (
           <Event 
-            event={event}
-            setEvents={setEvents}
-            key={i}
-            targetEvents={targetEvents}
-            setTargetEvents={setTargetEvents}
-            />
+          event={event}
+          setEvents={setEvents}
+          key={i}
+          targetEvents={targetEvents}
+          setTargetEvents={setTargetEvents}
+          />
         ))}
       </div>
+      <p>ALT CHECKBOX</p>
       <h3>SELECT BOOKMAKERS</h3>
       <div className='check-boxes'>
         {bms.map((bm) => (
