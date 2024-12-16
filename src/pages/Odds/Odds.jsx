@@ -117,7 +117,7 @@ const Odds = ({events, setEvents, testMode, setFinalString, targetEvents, setTar
             </p>
             {/* <p>...fetching props {predictions.length} / {targetEvents.length}</p> */}
             {predictions.map((pro) => {
-              return <p key={pro.id}>{pro.id}</p>
+              return <p key={pro.id}>{`${pro.away_team} @ ${pro.home_team}`}</p>
             })}
             <button onClick={() => createString()}>CREATE STRING</button>
           </>
