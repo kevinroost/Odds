@@ -1,5 +1,5 @@
 const statConversion = {
-
+  'player_points_alternate': 'Points',
   'player_points': 'Points',
   'player_rebounds': 'Rebounds',
   'player_assists': 'Assists',
