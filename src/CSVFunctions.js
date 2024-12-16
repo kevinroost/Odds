@@ -1,4 +1,5 @@
 const statConversion = {
+
   'player_points': 'Points',
   'player_rebounds': 'Rebounds',
   'player_assists': 'Assists',
@@ -7,6 +8,11 @@ const statConversion = {
   'player_steals': 'Steals',
   'player_turnovers': 'Turnovers',
   'player_pass_tds': 'Touchdown Pass'
+}
+
+function translate(myStat) {
+  const yourStat = statConversion[myStat] ? statConversion[myStat] : myStat
+  return yourStat
 }
 
 const deconstructEventObj = (eventObj) => {
@@ -18,7 +24,7 @@ const deconstructEventObj = (eventObj) => {
         Object.keys(outcome).map((i) => {
           outcomeArr.push(outcome[i])
         })
-        resultStr = resultStr + `${bm.title},` + `${statConversion[market.key]},` + outcomeArr.join(',') + '\n'
+        resultStr = resultStr + `${bm.title},` + `${translate(market.key)},` + outcomeArr.join(',') + '\n'
       })
     })
   })

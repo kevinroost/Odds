@@ -25,6 +25,7 @@ const Odds = ({events, setEvents, testMode, setFinalString, targetEvents, setTar
       const propsData = await oddsService.getPlayerProps(eventIdArr, markets)
       setPredictions(propsData)
       setLoadingProps(false)
+      console.log(predictions);
     }
     
     if (!testMode) {
@@ -44,15 +45,15 @@ const Odds = ({events, setEvents, testMode, setFinalString, targetEvents, setTar
     })
     console.log('FINAL',result);
     setFinalString(result)
-    let csvContent = "data:text/csv;charset=utf-8," 
-    + result;
-    var encodedUri = encodeURI(csvContent);
-    var link = document.createElement("a");
-    link.setAttribute("href", encodedUri);
-    link.setAttribute("download", "api_data.csv");
-    document.body.appendChild(link); // Required for FF
+    // let csvContent = "data:text/csv;charset=utf-8," 
+    // + result;
+    // var encodedUri = encodeURI(csvContent);
+    // var link = document.createElement("a");
+    // link.setAttribute("href", encodedUri);
+    // link.setAttribute("download", "api_data.csv");
+    // document.body.appendChild(link); // Required for FF
     
-    link.click();
+    // link.click();
   }
 
 
