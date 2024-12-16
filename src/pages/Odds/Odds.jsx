@@ -16,7 +16,7 @@ const Odds = ({events, setEvents, testMode, setFinalString, targetEvents, setTar
   const [loadingProps, setLoadingProps] = useState(false)
 
   
-  const markets = ['player_points_alternate'].join(',')
+  const markets = ['player_points_alternate', 'player_points', 'player_rebounds', 'player_assists', 'player_threes', 'player_blocks', 'player_steals', 'player_turnovers'].join(',')
 
   //, 'player_points', 'player_rebounds', 'player_assists', 'player_threes', 'player_blocks', 'player_steals', 'player_turnovers'
   
