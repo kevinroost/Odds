@@ -38,7 +38,7 @@ async function getEvents(today) {
       headers: { 'Content-Type': 'application/json' }
     })
     const json = await res.json()
-
+    console.log(json);
     if (json.err) throw new Error(json.err)
       return json
   } catch (err) {
@@ -46,12 +46,12 @@ async function getEvents(today) {
   }
 }
 
-async function getPlayerProps(eventIdArr, markets) {
+async function getPlayerProps(eventIdArr, markets, bms) {
   try {
     const resArr = []
     for (let i = 0; i < eventIdArr.length; i++) {
       await delay(2000)
-      const res = await fetch(`${BASE_URL}/sports/basketball_nba/events/${eventIdArr[i]}/odds?apiKey=${apiKey}&regions=us&markets=${markets}`, {
+      const res = await fetch(`${BASE_URL}/sports/basketball_nba/events/${eventIdArr[i]}/odds?apiKey=${apiKey}&regions=us&markets=${markets}&bookmakers=${bms.join(',')}`, {
         headers: { 'Content-Type': 'application/json' }
       })
       const json = await res.json()

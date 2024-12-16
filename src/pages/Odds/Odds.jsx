@@ -10,8 +10,9 @@ import './Odds.css'
 
 // components
 import Event from '../../components/EventComp/EventComp'
+import Bookmaker from '../../components/Bookmaker/Bookmaker'
 
-const Odds = ({events, setEvents, testMode, setFinalString, targetEvents, setTargetEvents, predictions, setPredictions, today, setToday}) => {
+const Odds = ({events, setEvents, testMode, setFinalString, targetEvents, setTargetEvents, predictions, setPredictions, today, setToday, bms, desiredBms, setDesiredBms}) => {
   // const [sports, setSports] = useState([])
   const [loadingProps, setLoadingProps] = useState(false)
 
@@ -22,21 +23,20 @@ const Odds = ({events, setEvents, testMode, setFinalString, targetEvents, setTar
   
   
   const getProps = () => {
-    const fetchProps = async (eventIdArr, markets) => {
+    const fetchProps = async (eventIdArr, markets, bms) => {
       await setLoadingProps(true)
-      const propsData = await oddsService.getPlayerProps(eventIdArr, markets)
+      const propsData = await oddsService.getPlayerProps(eventIdArr, markets, bms)
       setPredictions(propsData)
       setLoadingProps(false)
     }
     
     if (!testMode) {
       if (targetEvents.length > 0) {
-        fetchProps(targetEvents, markets.split(','))
+        fetchProps(targetEvents, markets.split(','), desiredBms)
       }
     } else {
       setPredictions(events)
     }
-    console.log(predictions);
   }
   
   const createString = () => {
@@ -91,6 +91,17 @@ const Odds = ({events, setEvents, testMode, setFinalString, targetEvents, setTar
             key={i}
             targetEvents={targetEvents}
             setTargetEvents={setTargetEvents}
+            />
+        ))}
+      </div>
+      <h3>SELECT BOOKMAKERS</h3>
+      <div className='check-boxes'>
+        {bms.map((bm) => (
+          <Bookmaker 
+            bm={bm}
+            key={bm}
+            desiredBms={desiredBms}
+            setDesiredBms={setDesiredBms}
             />
         ))}
       </div>
