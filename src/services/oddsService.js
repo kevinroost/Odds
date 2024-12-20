@@ -51,7 +51,7 @@ async function getPlayerProps(eventIdArr, markets, bms) {
     const resArr = []
     for (let i = 0; i < eventIdArr.length; i++) {
       await delay(2000)
-      const res = await fetch(`${BASE_URL}/sports/basketball_nba/events/${eventIdArr[i]}/odds?apiKey=${apiKey}&regions=us&markets=${markets}&bookmakers=${bms.join(',')}`, {
+      const res = await fetch(`${BASE_URL}/sports/basketball_nba/events/${eventIdArr[i]}/odds?apiKey=${apiKey}&regions=us&markets=${markets.join(',')}&bookmakers=${bms.join(',')}`, {
         headers: { 'Content-Type': 'application/json' }
       })
       const json = await res.json()

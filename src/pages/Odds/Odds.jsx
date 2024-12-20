@@ -11,6 +11,7 @@ import './Odds.css'
 // components
 import Event from '../../components/EventComp/EventComp'
 import Bookmaker from '../../components/Bookmaker/Bookmaker'
+import AltCheckbox from '../../components/AltCheckbox/AltCheckbox'
 
 const Odds = (
   {
@@ -34,7 +35,16 @@ const Odds = (
   const [loadingProps, setLoadingProps] = useState(false)
 
   
-  const markets = ['player_points', 'player_points_alternate', 'player_rebounds', 'player_assists', 'player_threes', 'player_blocks', 'player_steals', 'player_turnovers'].join(',')
+  const markets = [
+    'player_points', 
+    'player_points_alternate', 
+    'player_rebounds', 
+    'player_assists', 
+    'player_threes', 
+    'player_blocks', 
+    'player_steals', 
+    'player_turnovers'
+  ]
 
   //, 'player_points_alternate', 'player_rebounds', 'player_assists', 'player_threes', 'player_blocks', 'player_steals', 'player_turnovers'
   
@@ -55,7 +65,7 @@ const Odds = (
       setPredictions(events)
     }
   }
-  console.log(predictions);
+  console.log(includeAlts);
   
   const createString = () => {
     let result = ''
@@ -107,7 +117,9 @@ const Odds = (
           />
         ))}
       </div>
-      <p>ALT CHECKBOX</p>
+      <div>
+        <AltCheckbox includeAlts={includeAlts} setIncludeAlts={setIncludeAlts}/>
+      </div>
       <h3>SELECT BOOKMAKERS</h3>
       <div className='check-boxes'>
         {bms.map((bm) => (
