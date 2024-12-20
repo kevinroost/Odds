@@ -1,4 +1,23 @@
+button {
+  height: 32px;
+  align-self: center;
+  margin: 4px;
+}
+
 .check-boxes {
   display: flex;
   flex-direction: column;
+}
+
+#options {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.option {
+  margin: 8px;
+}
+
+.flex-row {
+  display: flex;
 }

@@ -100,37 +100,44 @@ const Odds = (
   return (
     <main>
       <h1>HI MITCHELL AND HUFF</h1>
-      <div>
-        <button style={{border: (today?'blue solid 3px':'none')}} onClick={() => setToday(true)}>TODAY'S EVENTS</button>
-        <button style={{border: (!today?'blue solid 3px':'none')}} onClick={() => setToday(false)}>ALL EVENTS</button>
-      </div>
-      
-      <div className='check-boxes'>
-        {events.map((event, i) => (
-          <Event 
-          event={event}
-          setEvents={setEvents}
-          key={i}
-          targetEvents={targetEvents}
-          setTargetEvents={setTargetEvents}
-          />
-        ))}
-      </div>
-      <div>
+      <section id='options'>
+        <section className='option'>
+          <h3>
+            <button style={{border: (today?'blue solid 3px':'none')}} onClick={() => setToday(true)}>TODAY'S EVENTS</button>
+            <button style={{border: (!today?'blue solid 3px':'none')}} onClick={() => setToday(false)}>ALL EVENTS</button>
+          </h3>
+        
+          <div className='check-boxes'>
+            {events.map((event, i) => (
+              <Event 
+              event={event}
+              setEvents={setEvents}
+              key={i}
+              targetEvents={targetEvents}
+              setTargetEvents={setTargetEvents}
+              />
+            ))}
+          </div>
+        </section>
+
+        <section className='option'>
+          <h3>SELECT BOOKMAKERS</h3>
+          <div className='check-boxes'>
+            {bms.map((bm) => (
+              <Bookmaker 
+              bm={bm}
+              key={bm}
+              desiredBms={desiredBms}
+              setDesiredBms={setDesiredBms}
+              />
+            ))}
+          </div>
+        </section>
+      </section>
+      <div className='flex-row'>
         <AltCheckbox includeAlts={includeAlts} setIncludeAlts={setIncludeAlts}/>
+        <button onClick={() => getProps()}>FETCH PROPS</button>
       </div>
-      <h3>SELECT BOOKMAKERS</h3>
-      <div className='check-boxes'>
-        {bms.map((bm) => (
-          <Bookmaker 
-            bm={bm}
-            key={bm}
-            desiredBms={desiredBms}
-            setDesiredBms={setDesiredBms}
-            />
-        ))}
-      </div>
-      <button onClick={() => getProps()}>FETCH PROPS</button>
   
       
       {
