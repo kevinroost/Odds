@@ -37,7 +37,6 @@ const Odds = (
   
   const markets = [
     'player_points', 
-    'player_points_alternate', 
     'player_rebounds', 
     'player_assists', 
     'player_threes', 
@@ -52,20 +51,20 @@ const Odds = (
   const getProps = () => {
     const fetchProps = async (eventIdArr, markets, bms) => {
       await setLoadingProps(true)
-      const propsData = await oddsService.getPlayerProps(eventIdArr, markets, bms)
+      const propsData = await oddsService.getPlayerProps(eventIdArr, markets, bms, includeAlts)
       setPredictions(propsData)
       setLoadingProps(false)
     }
     
     if (!testMode) {
       if (targetEvents.length > 0) {
-        fetchProps(targetEvents, markets.split(','), desiredBms)
+        fetchProps(targetEvents, markets, desiredBms)
       }
     } else {
       setPredictions(events)
     }
   }
-  console.log(includeAlts);
+  console.log(predictions);
   
   const createString = () => {
     let result = ''
