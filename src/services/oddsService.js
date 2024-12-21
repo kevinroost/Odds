@@ -11,7 +11,9 @@ const BASE_URL = `https://api.the-odds-api.com/v4`
 //derek's key
 // const apiKey = 'aca95eb6712f2d9f14266215b3daaac6'
 //jake's havoc key
-const apiKey = '6920ad65d7ac1fac95ecf5c39339f4e2'
+// const apiKey = '6920ad65d7ac1fac95ecf5c39339f4e2'
+// mitchells upgraded api key
+const apiKey = '7255c3ba183a37beeb3300f98821cdad'
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
