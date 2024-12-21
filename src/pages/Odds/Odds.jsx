@@ -12,6 +12,7 @@ import './Odds.css'
 import Event from '../../components/EventComp/EventComp'
 import Bookmaker from '../../components/Bookmaker/Bookmaker'
 import AltCheckbox from '../../components/AltCheckbox/AltCheckbox'
+import { login } from '../../services/authService'
 
 const Odds = (
   {
@@ -37,12 +38,12 @@ const Odds = (
   
   const markets = [
     'player_points', 
-    'player_rebounds', 
-    'player_assists', 
-    'player_threes', 
-    'player_blocks', 
-    'player_steals', 
-    'player_turnovers'
+    // 'player_rebounds', 
+    // 'player_assists', 
+    // 'player_threes', 
+    // 'player_blocks', 
+    // 'player_steals', 
+    // 'player_turnovers'
   ]
 
   //, 'player_points_alternate', 'player_rebounds', 'player_assists', 'player_threes', 'player_blocks', 'player_steals', 'player_turnovers'
@@ -64,7 +65,6 @@ const Odds = (
       setPredictions(events)
     }
   }
-  console.log(predictions);
   
   const createString = () => {
     let result = ''
@@ -94,8 +94,6 @@ const Odds = (
     
   }, [events, setTargetEvents])
 
-  
-  
   
   return (
     <main>
@@ -141,19 +139,23 @@ const Odds = (
   
       
       {
-        predictions && predictions.length > 0
+        predictions.resArr.length > 0
         ? 
-          <>
-            <p>
-              Fetched props for events:
-            </p>
-            {/* <p>...fetching props {predictions.length} / {targetEvents.length}</p> */}
-            {predictions.map((pro) => {
-              return <p key={pro.id}>{`${pro.away_team} @ ${pro.home_team}`}</p>
-            })}
-            <button onClick={() => createString()}>CREATE STRING</button>
-          </>
-        
+          predictions.status === 200
+          ?
+            <>
+              <p>
+                Fetched props for events:
+              </p>
+              {predictions.resArr.map((pro, i) => {
+                return <p key={i}>{`${pro.away_team} @ ${pro.home_team}`}</p>
+              })}
+              <button onClick={() => createString()}>CREATE STRING</button>
+            </>
+          :
+            <>
+              <h2>QUOTA MET</h2>
+            </>
         :
             !loadingProps?<h3>NO PREDICTIONS</h3>:<h3>fetching....</h3>
       }

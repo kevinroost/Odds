@@ -10,6 +10,8 @@ const BASE_URL = `https://api.the-odds-api.com/v4`
 // const apiKey = '1f6657e3afe6ab20d188a25cf5ac2705'
 //derek's key
 const apiKey = 'aca95eb6712f2d9f14266215b3daaac6'
+//jake's havoc key
+// const apiKey = '6920ad65d7ac1fac95ecf5c39339f4e2'
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -48,17 +50,22 @@ async function getEvents(today) {
 
 async function getPlayerProps(eventIdArr, markets, bms, includeAlts) {
   try {
-    const resArr = []
+    const resObj = {
+      status: null,
+      resArr: []
+    }
     for (let i = 0; i < eventIdArr.length; i++) {
       await delay(2000)
       const res = await fetch(`${BASE_URL}/sports/basketball_nba/events/${eventIdArr[i]}/odds?apiKey=${apiKey}&regions=us&markets=${markets.join(',')}${includeAlts?',player_points_alternate':''}&bookmakers=${bms.join(',')}`, {
         headers: { 'Content-Type': 'application/json' }
       })
+      resObj.status = res.status
       const json = await res.json()
-      resArr.push(json)
+      resObj.resArr.push(json)
+      if (res.status === 401) return resObj
       if (json.err) throw new Error(json.err)
     }
-  return resArr
+  return resObj
   } catch (err) {
     throw new Error(err)
   }

@@ -30,7 +30,7 @@ function App() {
   const bms = ['betonlineag', 'betmgm', 'betrivers', 'betus', 'bovada', 'draftkings', 'fanduel', 'lowvig', 'mybookieag', 'ballybet']
   const [desiredBms, setDesiredBms] = useState(['betonlineag', 'draftkings', 'fanduel', 'betmgm'])
   const [finalString, setFinalString] = useState([])
-  const [predictions, setPredictions] = useState([])
+  const [predictions, setPredictions] = useState({status: 999, resArr: []})
   const [today, setToday] = useState(true)
   const [includeAlts, setIncludeAlts] = useState(false)
 
@@ -52,7 +52,7 @@ function App() {
   const reset = () => {
     setEvents([])
     setTargetEvents([])
-    setPredictions([])
+    setPredictions({status: 999, resArr: []})
   }
 
   const getEvents = useCallback(async () => {
