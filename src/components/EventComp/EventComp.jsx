@@ -9,7 +9,7 @@ const Event = ({event, targetEvents, setTargetEvents}) => {
     setTargetEvents(targetEvents.filter((e) => e!==event.id)):
     setTargetEvents([...targetEvents, event.id])
     setIsChecked(!isChecked)
-    console.log(targetEvents);
+
   }
 
   return(

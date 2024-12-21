@@ -42,7 +42,6 @@ async function getEvents(today) {
       headers: { 'Content-Type': 'application/json' }
     })
     const json = await res.json()
-    console.log(json);
     if (json.err) throw new Error(json.err)
       return json
   } catch (err) {
@@ -64,7 +63,6 @@ async function getPlayerProps(eventIdArr, markets, bms, includeAlts) {
       resObj.status = res.status
       const json = await res.json()
       resObj.resArr.push(json)
-      console.log('result', resObj);
       if (res.status === 401) return resObj
       if (json.err) throw new Error(json.err)
     }
