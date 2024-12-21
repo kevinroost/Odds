@@ -38,12 +38,12 @@ const Odds = (
   
   const markets = [
     'player_points', 
-    // 'player_rebounds', 
-    // 'player_assists', 
-    // 'player_threes', 
-    // 'player_blocks', 
-    // 'player_steals', 
-    // 'player_turnovers'
+    'player_rebounds', 
+    'player_assists', 
+    'player_threes', 
+    'player_blocks', 
+    'player_steals', 
+    'player_turnovers'
   ]
 
   //, 'player_points_alternate', 'player_rebounds', 'player_assists', 'player_threes', 'player_blocks', 'player_steals', 'player_turnovers'
