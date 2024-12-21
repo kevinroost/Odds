@@ -66,6 +66,7 @@ async function getPlayerProps(eventIdArr, markets, bms, includeAlts) {
       if (res.status === 401) return resObj
       if (json.err) throw new Error(json.err)
     }
+  console.log(resObj);
   return resObj
   } catch (err) {
     throw new Error(err)
