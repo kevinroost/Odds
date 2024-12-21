@@ -32,7 +32,7 @@ function App() {
   const [finalString, setFinalString] = useState([])
   const [predictions, setPredictions] = useState({status: 999, resArr: []})
   const [today, setToday] = useState(true)
-  const [includeAlts, setIncludeAlts] = useState(false)
+  const [includeAlts, setIncludeAlts] = useState(true)
 
 
   const testMode = false
