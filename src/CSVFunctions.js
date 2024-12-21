@@ -3,7 +3,7 @@ const statConversion = {
   'player_points': 'Points',
   'player_rebounds': 'Rebounds',
   'player_assists': 'Assists',
-  'player_threes': 'ThreePt',
+  'player_threes': 'Threes',
   'player_blocks': 'Blocks',
   'player_steals': 'Steals',
   'player_turnovers': 'Turnovers',
