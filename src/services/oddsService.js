@@ -9,9 +9,9 @@ const BASE_URL = `https://api.the-odds-api.com/v4`
 //jake's key
 // const apiKey = '1f6657e3afe6ab20d188a25cf5ac2705'
 //derek's key
-const apiKey = 'aca95eb6712f2d9f14266215b3daaac6'
+// const apiKey = 'aca95eb6712f2d9f14266215b3daaac6'
 //jake's havoc key
-// const apiKey = '6920ad65d7ac1fac95ecf5c39339f4e2'
+const apiKey = '6920ad65d7ac1fac95ecf5c39339f4e2'
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -62,6 +62,7 @@ async function getPlayerProps(eventIdArr, markets, bms, includeAlts) {
       resObj.status = res.status
       const json = await res.json()
       resObj.resArr.push(json)
+      console.log('result', resObj);
       if (res.status === 401) return resObj
       if (json.err) throw new Error(json.err)
     }

@@ -22,7 +22,8 @@ const deconstructEventObj = (eventObj) => {
       market.outcomes.forEach((outcome) => {
         let outcomeArr = []
         Object.keys(outcome).map((i) => {
-          outcomeArr.push(outcome[i])
+          const newValue = i === 'description' ? outcome[i].replace('Jr', 'Jr.') : outcome[i]
+          outcomeArr.push(newValue)
         })
         resultStr = resultStr + `${bm.title},` + `${translate(market.key)},` + outcomeArr.join(',') + (market.key === 'player_points_alternate' ? ',alt' : ',now') + '\n'
       })

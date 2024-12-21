@@ -68,7 +68,7 @@ const Odds = (
   
   const createString = () => {
     let result = ''
-    predictions.forEach((pre) => {
+    predictions.resArr.forEach((pre) => {
       console.log(pre);
       result = result.concat('', `${deconstructCSV(pre)}`)
     })
