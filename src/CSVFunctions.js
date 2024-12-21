@@ -25,7 +25,7 @@ const deconstructEventObj = (eventObj) => {
           const newValue = i === 'description' ? outcome[i].replace('Jr', 'Jr.') : outcome[i]
           outcomeArr.push(newValue)
         })
-        resultStr = resultStr + `${bm.title},` + `${translate(market.key)},` + outcomeArr.join(',') + (market.key === 'player_points_alternate' ? ',alt' : ',standard') + '\n'
+        resultStr = resultStr + `${eventObj.away_team} @ ${eventObj.home_team},` + `${bm.title},` + `${translate(market.key)},` + outcomeArr.join(',') + (market.key === 'player_points_alternate' ? ',alt' : ',standard') + '\n'
       })
     })
   })
