@@ -37,12 +37,12 @@ const Odds = (
 
   const markets = [
     'player_points', 
-    // 'player_rebounds', 
-    // 'player_assists', 
-    // 'player_threes', 
-    // 'player_blocks', 
-    // 'player_steals', 
-    // 'player_turnovers'
+    'player_rebounds', 
+    'player_assists', 
+    'player_threes', 
+    'player_blocks', 
+    'player_steals', 
+    'player_turnovers'
   ]  
   
   const getProps = () => {
@@ -136,22 +136,16 @@ const Odds = (
       {
         predictions.resArr.length > 0
         ? 
-          predictions.status === 200
-          ?
           <>
             <h4>{`Remaining Requests: ${predictions.remainingRequests}`}</h4>
-              <p>
-                Fetched props for events:
-              </p>
-              {predictions.resArr.map((pro, i) => {
-                return <p key={i}>{`${pro.away_team} @ ${pro.home_team}`}</p>
-              })}
-              <button onClick={() => createString()}>CREATE STRING</button>
-            </>
-          :
-            <>
-              <h2>QUOTA MET</h2>
-            </>
+            <p>
+              Fetched props for events:
+            </p>
+            {predictions.resArr.map((pro, i) => {
+              return <p key={i}>{`${pro.away_team} @ ${pro.home_team}`}</p>
+            })}
+            <button onClick={() => createString()}>CREATE STRING</button>
+          </>
         :
             !loadingProps?<h3>NO PREDICTIONS</h3>:<h3>fetching....</h3>
       }
