@@ -35,19 +35,15 @@ const Odds = (
   // const [sports, setSports] = useState([])
   const [loadingProps, setLoadingProps] = useState(false)
 
-  
   const markets = [
     'player_points', 
-    'player_rebounds', 
-    'player_assists', 
-    'player_threes', 
-    'player_blocks', 
-    'player_steals', 
-    'player_turnovers'
-  ]
-
-  //, 'player_points_alternate', 'player_rebounds', 'player_assists', 'player_threes', 'player_blocks', 'player_steals', 'player_turnovers'
-  
+    // 'player_rebounds', 
+    // 'player_assists', 
+    // 'player_threes', 
+    // 'player_blocks', 
+    // 'player_steals', 
+    // 'player_turnovers'
+  ]  
   
   const getProps = () => {
     const fetchProps = async (eventIdArr, markets, bms) => {
@@ -136,14 +132,14 @@ const Odds = (
         <AltCheckbox includeAlts={includeAlts} setIncludeAlts={setIncludeAlts}/>
         <button onClick={() => getProps()}>FETCH PROPS</button>
       </div>
-  
       
       {
         predictions.resArr.length > 0
         ? 
           predictions.status === 200
           ?
-            <>
+          <>
+            <h4>{`Remaining Requests: ${predictions.remainingRequests}`}</h4>
               <p>
                 Fetched props for events:
               </p>

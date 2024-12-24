@@ -53,7 +53,8 @@ async function getPlayerProps(eventIdArr, markets, bms, includeAlts) {
   try {
     const resObj = {
       status: null,
-      resArr: []
+      resArr: [],
+      remainingRequests: 0
     }
     for (let i = 0; i < eventIdArr.length; i++) {
       await delay(2000)
@@ -61,12 +62,12 @@ async function getPlayerProps(eventIdArr, markets, bms, includeAlts) {
         headers: { 'Content-Type': 'application/json' }
       })
       resObj.status = res.status
+      resObj.remainingRequests = res.headers.get("x-requests-remaining")
       const json = await res.json()
       resObj.resArr.push(json)
       if (res.status === 401) return resObj
       if (json.err) throw new Error(json.err)
     }
-  console.log(resObj);
   return resObj
   } catch (err) {
     throw new Error(err)
