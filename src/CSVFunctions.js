@@ -59,7 +59,6 @@ const deconstructEventObj = (eventObj) => {
       })
     })
   })
-  console.log(resultStr);
   return resultStr
 
 }
