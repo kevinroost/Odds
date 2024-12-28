@@ -30,6 +30,7 @@ const formatConversion = {
     'Wendell Carter Jr':'Wendell Carter Jr.',
     'Michael Porter Jr':'Michael Porter Jr.',
     'Jabari Smith Jr':'Jabari Smith Jr.',
+    'Gary Trent Jr':'Gary Trent Jr.',
   }
 }
 
