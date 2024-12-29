@@ -31,6 +31,7 @@ const formatConversion = {
     'Michael Porter Jr':'Michael Porter Jr.',
     'Jabari Smith Jr':'Jabari Smith Jr.',
     'Gary Trent Jr':'Gary Trent Jr.',
+    'RJ Barrett':'R.J. Barrett',
   }
 }
 
