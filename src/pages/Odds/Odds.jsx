@@ -89,6 +89,7 @@ const Odds = (
     
   }, [events, setTargetEvents])
 
+  console.log(desiredBms);
   
   return (
     <main>
@@ -116,6 +117,10 @@ const Odds = (
 
         <section className='option'>
           <h3>SELECT BOOKMAKERS</h3>
+          <h3>
+            <button onClick={() => setDesiredBms(bms)}>SELECT ALL</button>
+            <button onClick={() => setDesiredBms([])}>DESELECT ALL</button>
+          </h3>
           <div className='check-boxes'>
             {bms.map((bm) => (
               <Bookmaker 
