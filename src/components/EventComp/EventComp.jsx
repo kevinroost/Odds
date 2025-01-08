@@ -1,5 +1,5 @@
 import './EventComp.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const Event = ({event, targetEvents, setTargetEvents}) => {
   const [isChecked, setIsChecked] = useState(true)
@@ -11,6 +11,10 @@ const Event = ({event, targetEvents, setTargetEvents}) => {
     setIsChecked(!isChecked)
 
   }
+
+  useEffect(() => {
+    setIsChecked(targetEvents.includes(event.id)?true:false)
+  }, [targetEvents, event.id])
 
   return(
     <div className="check-box-option">

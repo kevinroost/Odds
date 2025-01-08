@@ -89,7 +89,7 @@ const Odds = (
     
   }, [events, setTargetEvents])
 
-  console.log(desiredBms);
+  console.log(targetEvents);
   
   return (
     <main>
@@ -100,6 +100,10 @@ const Odds = (
           <h3>
             <button style={{border: (today?'blue solid 3px':'none')}} onClick={() => setToday(true)}>TODAY'S EVENTS</button>
             <button style={{border: (!today?'blue solid 3px':'none')}} onClick={() => setToday(false)}>ALL EVENTS</button>
+          </h3>
+          <h3>
+            <button onClick={() => setTargetEvents(events.map((e) => {return e.id}))}>SELECT ALL</button>
+            <button onClick={() => setTargetEvents([])}>DESELECT ALL</button>
           </h3>
         
           <div className='check-boxes'>
