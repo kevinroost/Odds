@@ -43,7 +43,7 @@ const Odds = (
     'player_blocks', 
     'player_steals', 
     'player_turnovers'
-  ]  
+  ]
   
   const getProps = () => {
     const fetchProps = async (eventIdArr, markets, bms) => {
