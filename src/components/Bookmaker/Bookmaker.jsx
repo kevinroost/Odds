@@ -1,5 +1,5 @@
 import './Bookmaker.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const Bookmaker = ({bm, desiredBms, setDesiredBms}) => {
   const [isChecked, setIsChecked] = useState(desiredBms.includes(bm)?true:false)
@@ -10,6 +10,10 @@ const Bookmaker = ({bm, desiredBms, setDesiredBms}) => {
     setDesiredBms([...desiredBms, bm])
     setIsChecked(!isChecked)
   }
+
+  useEffect(() => {
+    setIsChecked(desiredBms.includes(bm)?true:false)
+  }, [desiredBms, bm])
 
   return(
     <div className="check-box-option">

@@ -124,11 +124,11 @@ const Odds = (
           <div className='check-boxes'>
             {bms.map((bm) => (
               <Bookmaker 
-              bm={bm}
-              key={bm}
-              desiredBms={desiredBms}
-              setDesiredBms={setDesiredBms}
-              />
+                bm={bm}
+                key={bm}
+                desiredBms={desiredBms}
+                setDesiredBms={setDesiredBms}
+                />
             ))}
           </div>
         </section>
