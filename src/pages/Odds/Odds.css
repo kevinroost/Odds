@@ -21,4 +21,5 @@ button {
 
 .flex-row {
   display: flex;
+  flex-wrap: wrap;
 }

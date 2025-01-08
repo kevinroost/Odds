@@ -93,8 +93,9 @@ const Odds = (
   return (
     <main>
       <h1>HI MITCHELL AND HUFF</h1>
-      <section id='options'>
+      <section className='flex-row'>
         <section className='option'>
+          <h3>SELECT EVENTS</h3>
           <h3>
             <button style={{border: (today?'blue solid 3px':'none')}} onClick={() => setToday(true)}>TODAY'S EVENTS</button>
             <button style={{border: (!today?'blue solid 3px':'none')}} onClick={() => setToday(false)}>ALL EVENTS</button>
