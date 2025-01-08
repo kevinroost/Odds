@@ -37,12 +37,12 @@ const Odds = (
 
   const markets = [
     'player_points', 
-    'player_rebounds', 
-    'player_assists', 
-    'player_threes', 
-    'player_blocks', 
-    'player_steals', 
-    'player_turnovers'
+    // 'player_rebounds', 
+    // 'player_assists', 
+    // 'player_threes', 
+    // 'player_blocks', 
+    // 'player_steals', 
+    // 'player_turnovers'
   ]
   
   const getProps = () => {
@@ -98,8 +98,8 @@ const Odds = (
         <section className='option'>
           <h3>SELECT EVENTS</h3>
           <h3>
-            <button style={{border: (today?'blue solid 3px':'none')}} onClick={() => setToday(true)}>TODAY'S EVENTS</button>
-            <button style={{border: (!today?'blue solid 3px':'none')}} onClick={() => setToday(false)}>ALL EVENTS</button>
+            <button style={{border: (today?'rgb(79, 130, 251) solid 3px':'none')}} onClick={() => setToday(true)}>TODAY'S EVENTS</button>
+            <button style={{border: (!today?'rgb(79, 130, 251) solid 3px':'none')}} onClick={() => setToday(false)}>ALL EVENTS</button>
           </h3>
           <h3>
             <button onClick={() => setTargetEvents(events.map((e) => {return e.id}))}>SELECT ALL</button>

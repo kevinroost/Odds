@@ -29,10 +29,12 @@ const formatConversion = {
     'Moe Wagner':'Moritz Wagner',
     'Nicolas Claxton':'Nic Claxton',
     'P.J. Washington':'PJ Washington',
-    'RJ Barrett':'R.J. Barrett',
+    'R.J. Barrett':'RJ Barrett',
     'Scotty Pippen Jr':'Scotty Pippen Jr.',
     'Tim Hardaway Jr':'Tim Hardaway Jr.',
     'Wendell Carter Jr':'Wendell Carter Jr.',
+    'Ron Holland':'Ronald Holland II',	
+    'Bruce Brown Jr':'Bruce Brown',	
   }
 }
 

@@ -3,6 +3,8 @@ button {
   align-self: center;
   margin: 4px;
   padding: 2px;
+  color: rgb(79, 130, 251);
+  background-color: black;
 }
 
 .check-boxes {
