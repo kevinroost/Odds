@@ -28,7 +28,7 @@ function App() {
   const [events, setEvents] = useState([])
   const [targetEvents, setTargetEvents] = useState([])
   const bms = ['betonlineag', 'betmgm', 'betrivers', 'betus', 'bovada', 'draftkings', 'fanduel', 'lowvig', 'mybookieag', 'ballybet']
-  const [desiredBms, setDesiredBms] = useState(['draftkings', 'fanduel', 'betrivers', 'ballybet', 'betus'])
+  const [desiredBms, setDesiredBms] = useState(['fanduel'])
   const [finalString, setFinalString] = useState([])
   const [predictions, setPredictions] = useState({status: 999, resArr: [], remainingRequests: 0})
   const [today, setToday] = useState(true)
