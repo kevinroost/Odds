@@ -7,6 +7,10 @@ button {
   background-color: black;
 }
 
+/* input[type="checkbox"] {
+  outline: 3px solid black;
+} */
+
 .check-boxes {
   display: flex;
   flex-direction: column;
