@@ -27,7 +27,18 @@ function App() {
   const [user, setUser] = useState(authService.getUser())
   const [events, setEvents] = useState([])
   const [targetEvents, setTargetEvents] = useState([])
-  const bms = ['betonlineag', 'betmgm', 'betrivers', 'betus', 'bovada', 'draftkings', 'fanduel', 'lowvig', 'mybookieag', 'ballybet', 'williamhill_us']
+  const bms = ['betonlineag', 
+    'ballybet', 
+    'betmgm', 
+    'betrivers', 
+    'betus', 
+    'bovada', 
+    'draftkings', 
+    'fanduel', 
+    'lowvig', 
+    'mybookieag', 
+    'williamhill_us'
+  ]
   const [desiredBms, setDesiredBms] = useState(['fanduel'])
   const [finalString, setFinalString] = useState([])
   const [predictions, setPredictions] = useState({status: 999, resArr: [], remainingRequests: 0})
