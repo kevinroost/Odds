@@ -27,9 +27,10 @@ function App() {
   const [user, setUser] = useState(authService.getUser())
   const [events, setEvents] = useState([])
   const [targetEvents, setTargetEvents] = useState([])
-  const bms = ['betonlineag', 
+  const bms = [
     'ballybet', 
     'betmgm', 
+    'betonlineag', 
     'betrivers', 
     'betus', 
     'bovada', 
