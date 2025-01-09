@@ -10,7 +10,7 @@ const AltCheckbox = ({includeAlts, setIncludeAlts}) => {
   }
 
   return(
-    <h3>
+    <h3 className='check-box-option'>
       <input type="checkbox" id={'inclAlts'} name={'inclAlts'} value={'inclAlts'} onChange={() => handleCheck()} checked={isChecked} />
       <label htmlFor={'inclAlts'}>Include Alts?</label>
     </h3>
