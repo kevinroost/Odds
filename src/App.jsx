@@ -40,7 +40,7 @@ function App() {
     'mybookieag', 
     'williamhill_us'
   ]
-  const [desiredBms, setDesiredBms] = useState(['fanduel'])
+  const [desiredBms, setDesiredBms] = useState(['fanduel', 'williamhill_us'])
   const [finalString, setFinalString] = useState([])
   const [predictions, setPredictions] = useState({status: 999, resArr: [], remainingRequests: 0})
   const [today, setToday] = useState(true)
