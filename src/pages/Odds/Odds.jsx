@@ -96,7 +96,7 @@ const Odds = (
       <h1>HI MITCHELL AND HUFF</h1>
       <section className='flex-row'>
         <section className='option'>
-          <h3>SELECT EVENTS</h3>
+          <h3>1. SELECT EVENTS</h3>
           <h3>
             <button style={{border: (today?'rgb(79, 130, 251) solid 3px':'none')}} onClick={() => setToday(true)}>TODAY'S EVENTS</button>
             <button style={{border: (!today?'rgb(79, 130, 251) solid 3px':'none')}} onClick={() => setToday(false)}>ALL EVENTS</button>
@@ -120,7 +120,7 @@ const Odds = (
         </section>
 
         <section className='option'>
-          <h3>SELECT BOOKMAKERS</h3>
+          <h3>2. SELECT BOOKMAKERS</h3>
           <h3>
             <button onClick={() => setDesiredBms(bms)}>SELECT ALL</button>
             <button onClick={() => setDesiredBms([])}>DESELECT ALL</button>
