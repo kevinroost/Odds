@@ -23,6 +23,9 @@ body {
   -webkit-text-size-adjust: 100%;
   padding: 1em;
 }
+span {
+  font-size: 18px;
+}
 
 a,
 a:visited {

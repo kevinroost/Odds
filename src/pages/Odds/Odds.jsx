@@ -96,7 +96,7 @@ const Odds = (
       <h1>HI MITCHELL AND HUFF</h1>
       <section className='flex-row'>
         <section className='option'>
-          <h3>1. SELECT EVENTS</h3>
+          <h3><span>1. </span> SELECT EVENTS</h3>
           <h3>
             <button style={{border: (today?'rgb(79, 130, 251) solid 3px':'none')}} onClick={() => setToday(true)}>TODAY'S EVENTS</button>
             <button style={{border: (!today?'rgb(79, 130, 251) solid 3px':'none')}} onClick={() => setToday(false)}>ALL EVENTS</button>
@@ -120,7 +120,7 @@ const Odds = (
         </section>
 
         <section className='option'>
-          <h3>2. SELECT BOOKMAKERS</h3>
+          <h3><span>2. </span> SELECT BOOKMAKERS</h3>
           <h3>
             <button onClick={() => setDesiredBms(bms)}>SELECT ALL</button>
             <button onClick={() => setDesiredBms([])}>DESELECT ALL</button>
@@ -139,7 +139,9 @@ const Odds = (
       </section>
       <div className='flex-row'>
         <AltCheckbox includeAlts={includeAlts} setIncludeAlts={setIncludeAlts}/>
-        <button onClick={() => getProps()}>FETCH PROPS</button>
+      </div>
+      <div>
+        <span>4. </span> <button onClick={() => getProps()}>FETCH PROPS</button>
       </div>
       
       {
@@ -153,7 +155,7 @@ const Odds = (
             {predictions.resArr.map((pro, i) => {
               return <p key={i}>{`${pro.away_team} @ ${pro.home_team}`}</p>
             })}
-            <button onClick={() => createString()}>CREATE STRING</button>
+            <span>5. </span> <button onClick={() => createString()}>CREATE STRING</button>
           </>
         :
             !loadingProps?<h3>NO PREDICTIONS</h3>:<h3>fetching....</h3>
