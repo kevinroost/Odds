@@ -57,7 +57,7 @@ async function getPlayerProps(eventIdArr, markets, bms, includeAlts) {
       remainingRequests: 0
     }
     for (let i = 0; i < eventIdArr.length; i++) {
-      await delay(2000)
+      await delay(500)
       const res = await fetch(`${BASE_URL}/sports/basketball_nba/events/${eventIdArr[i]}/odds?apiKey=${apiKey}&regions=us&markets=${markets.join(',')}${includeAlts?',player_points_alternate':''}&bookmakers=${bms.join(',')}`, {
         headers: { 'Content-Type': 'application/json' }
       })
