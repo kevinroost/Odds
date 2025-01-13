@@ -140,8 +140,8 @@ const Odds = (
       <div className='flex-row'>
         <AltCheckbox includeAlts={includeAlts} setIncludeAlts={setIncludeAlts}/>
       </div>
-      <div>
-        <span>4. </span> <button onClick={() => getProps()}>FETCH PROPS</button>
+      <div className='check-box-option'>
+        <h3>4. </h3> <button onClick={() => getProps()}>FETCH PROPS</button>
       </div>
       
       {

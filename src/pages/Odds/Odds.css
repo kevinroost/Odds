@@ -5,11 +5,11 @@ button {
   padding: 2px;
   color: rgb(79, 130, 251);
   background-color: black;
+  white-space: nowrap;
 }
 
 label {
   display: flex;
-  align-content: left;
   font-family: Arial Narrow, sans-serif;
   white-space: nowrap;
 }
