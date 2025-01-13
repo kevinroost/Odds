@@ -2,7 +2,7 @@
 *::before,
 *::after {
   box-sizing: inherit;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow', sans-serif
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
 }
 
 body {
@@ -14,7 +14,7 @@ body {
   /* font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; */
 
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #3f3f3f;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;

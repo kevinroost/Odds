@@ -9,7 +9,9 @@ button {
 
 label {
   display: flex;
-  justify-content: center;
+  align-content: left;
+  font-family: Arial Narrow, sans-serif;
+  white-space: nowrap;
 }
 
 
@@ -21,6 +23,8 @@ input[type="checkbox"] {
   height: 15px;
   border: 4px solid black;
   background: black;
+  align-self: center;
+  margin: 0 6px;
 }
 
 input[type="checkbox"]:checked {
@@ -41,6 +45,7 @@ input[type="checkbox"]:checked {
 
 .option {
   margin: 8px;
+  width: fit-content;
 }
 
 .flex-row {

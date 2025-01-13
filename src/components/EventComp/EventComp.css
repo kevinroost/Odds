@@ -1,5 +1,7 @@
 .check-box-option {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
+  display: grid;
+  grid-template-columns: repeat(2, min-content);
+  /* grid-template-columns: min-content auto; */
+  /* flex-direction: row; */
+  /* justify-content: flex-start; */
 }
