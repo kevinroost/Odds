@@ -15,6 +15,7 @@ const formatConversion = {
     'Alex Sarr':'Alexandre Sarr',
     'Andre Jackson Jr':'Andre Jackson Jr.',
     'B.J. Boston Jr':'Brandon Boston Jr.',
+    'C.J. McCollum':'CJ McCollum',
     'Derrick Jones':'Derrick Jones Jr.',
     'Gary Trent Jr':'Gary Trent Jr.',
     'Herb Jones':'Herbert Jones',
