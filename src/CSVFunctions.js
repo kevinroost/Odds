@@ -15,6 +15,7 @@ const formatConversion = {
     'Alex Sarr':'Alexandre Sarr',
     'Andre Jackson Jr':'Andre Jackson Jr.',
     'B.J. Boston Jr':'Brandon Boston Jr.',
+    'Bruce Brown Jr':'Bruce Brown',	
     'C.J. McCollum':'CJ McCollum',
     'Derrick Jones':'Derrick Jones Jr.',
     'Gary Trent Jr':'Gary Trent Jr.',
@@ -28,12 +29,13 @@ const formatConversion = {
     'Michael Porter Jr':'Michael Porter Jr.',
     'Moe Wagner':'Moritz Wagner',
     'Nick Smith Jr':'Nick Smith Jr.',
+    'Nicolas Claxton':'Nic Claxton',
+    'P.J. Washington':'PJ Washington',
     'R.J. Barrett':'RJ Barrett',
+    'Ron Holland':'Ronald Holland II',	
     'Scotty Pippen Jr':'Scotty Pippen Jr.',
     'Tim Hardaway Jr':'Tim Hardaway Jr.',
     'Wendell Carter Jr':'Wendell Carter Jr.',
-    'Ron Holland':'Ronald Holland II',	
-    'Bruce Brown Jr':'Bruce Brown',	
   }
 }
 
