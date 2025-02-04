@@ -89,7 +89,6 @@ const Odds = (
     
   }, [events, setTargetEvents])
 
-  console.log(targetEvents);
   
   return (
     <main>

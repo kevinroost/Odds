@@ -37,6 +37,7 @@ const formatConversion = {
     'Ron Holland':'Ronald Holland II',	
     'Scotty Pippen Jr':'Scotty Pippen Jr.',
     'Tim Hardaway Jr':'Tim Hardaway Jr.',
+    'Vit Krejci':'Vít Krejčí',
     'Wendell Carter Jr':'Wendell Carter Jr.',
   }
 }
