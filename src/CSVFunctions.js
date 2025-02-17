@@ -13,6 +13,7 @@ const formatConversion = {
   players: {
     'A.J. Green':'AJ Green',
     'Alex Sarr':'Alexandre Sarr',
+    'Alperen Sengun':'Alperen Sengün',
     'Andre Jackson Jr':'Andre Jackson Jr.',
     'B.J. Boston Jr':'Brandon Boston Jr.',
     'Bruce Brown Jr':'Bruce Brown',	
@@ -37,7 +38,6 @@ const formatConversion = {
     'Ron Holland':'Ronald Holland II',	
     'Scotty Pippen Jr':'Scotty Pippen Jr.',
     'Tim Hardaway Jr':'Tim Hardaway Jr.',
-    'Vit Krejci':'Vít Krejčí',
     'Wendell Carter Jr':'Wendell Carter Jr.',
   }
 }
