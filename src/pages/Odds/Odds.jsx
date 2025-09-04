@@ -12,7 +12,7 @@ import './Odds.css'
 import Event from '../../components/EventComp/EventComp'
 import Bookmaker from '../../components/Bookmaker/Bookmaker'
 import AltCheckbox from '../../components/AltCheckbox/AltCheckbox'
-import { login } from '../../services/authService'
+
 
 const Odds = (
   {
@@ -30,32 +30,61 @@ const Odds = (
     desiredBms, 
     setDesiredBms,
     includeAlts,
-    setIncludeAlts
+    setIncludeAlts,
+    alts
   }) => {
   // const [sports, setSports] = useState([])
   const [loadingProps, setLoadingProps] = useState(false)
 
-  const markets = [
-    'player_points', 
-    'player_rebounds', 
-    'player_assists', 
-    'player_threes', 
-    'player_blocks', 
-    'player_steals', 
-    'player_turnovers'
-  ]
+  const markets = {
+    basketball: [
+      'player_points', 
+      'player_rebounds', 
+      'player_assists', 
+      'player_threes', 
+      'player_blocks', 
+      'player_steals', 
+      'player_turnovers'
+    ],
+    football: [
+      'player_assists',
+      'player_pass_attempts',
+      'player_pass_completions',
+      'player_pass_interceptions',
+      'player_pass_longest_completion',
+      'player_pass_tds',
+      'player_pass_yds',
+      'player_receptions',
+      'player_reception_longest',
+      'player_reception_tds',
+      'player_reception_yds',
+      'player_rush_attempts',
+      'player_rush_longest',
+      'player_rush_reception_yds',
+      'player_rush_tds',
+      'player_rush_yds',
+      'player_sacks',
+      'player_tds_over',
+      'player_1st_td',
+      'player_anytime_td',
+      'player_last_td'
+    ]
+  }
+
   
   const getProps = () => {
     const fetchProps = async (eventIdArr, markets, bms) => {
       await setLoadingProps(true)
-      const propsData = await oddsService.getPlayerProps(eventIdArr, markets, bms, includeAlts)
+      const propsData = await oddsService.getPlayerProps(eventIdArr, markets, bms, includeAlts, alts.football)
       setPredictions(propsData)
       setLoadingProps(false)
+      console.log(propsData);
+      
     }
     
     if (!testMode) {
       if (targetEvents.length > 0) {
-        fetchProps(targetEvents, markets, desiredBms)
+        fetchProps(targetEvents, markets.football, desiredBms)
       }
     } else {
       setPredictions(events)

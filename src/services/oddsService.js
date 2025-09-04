@@ -13,7 +13,7 @@ const BASE_URL = `https://api.the-odds-api.com/v4`
 //jake's havoc key
 // const apiKey = '6920ad65d7ac1fac95ecf5c39339f4e2'
 // mitchells upgraded api key
-const apiKey = '7255c3ba183a37beeb3300f98821cdad'
+const apiKey = '46e6b7f146072dc4056bf0c8e49bb401'
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -32,16 +32,19 @@ async function getSports() {
     throw new Error(err)
   }
 }
+
 async function getEvents(today) {
   var end = new Date();
   end.setHours(23,59,59);
   //&commenceTimeTo=${end.toISOString().slice(0, -5)+'Z'}
   const commencementFilter = today?`&commenceTimeTo=${end.toISOString().slice(0, -5)+'Z'}`:``
   try {
-    const res = await fetch(`${BASE_URL}/sports/basketball_nba/events?apiKey=${apiKey}` + `${commencementFilter}`, {
+    const res = await fetch(`${BASE_URL}/sports/americanfootball_nfl/events?apiKey=${apiKey}` + `${commencementFilter}`, {
       headers: { 'Content-Type': 'application/json' }
     })
     const json = await res.json()
+    console.log('json', json);
+    
     if (json.err) throw new Error(json.err)
       return json
   } catch (err) {
@@ -49,7 +52,7 @@ async function getEvents(today) {
   }
 }
 
-async function getPlayerProps(eventIdArr, markets, bms, includeAlts) {
+async function getPlayerProps(eventIdArr, markets, bms, includeAlts, alts) {
   try {
     const resObj = {
       status: null,
@@ -57,14 +60,15 @@ async function getPlayerProps(eventIdArr, markets, bms, includeAlts) {
       remainingRequests: 0
     }
     for (let i = 0; i < eventIdArr.length; i++) {
+      console.log(eventIdArr);
+      
       await delay(500)
-      const res = await fetch(`${BASE_URL}/sports/basketball_nba/events/${eventIdArr[i]}/odds?apiKey=${apiKey}&regions=us&markets=${markets.join(',')}${includeAlts?',player_points_alternate':''}&bookmakers=${bms.join(',')}`, {
+      const res = await fetch(`${BASE_URL}/sports/americanfootball_nfl/events/${eventIdArr[i]}/odds?apiKey=${apiKey}&regions=us&markets=${markets.join(',')}${includeAlts?alts:''}&bookmakers=${bms.join(',')}`, {
         headers: { 'Content-Type': 'application/json' }
       })
       resObj.status = res.status
       resObj.remainingRequests = res.headers.get("x-requests-remaining")
       const json = await res.json()
-      console.log(res);
       console.log(json);
       
       resObj.resArr.push(json)

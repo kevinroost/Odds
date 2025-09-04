@@ -49,6 +49,15 @@ function App() {
 
   const testMode = false
 
+  const alts = {
+    football: [
+      ',player_assists_alternate,player_pass_tds_alternate,player_pass_yds_alternate,player_reception_tds_alternate,player_reception_yds_alternate,player_rush_reception_yds_alternate,player_rush_tds_alternate,player_rush_yds_alternate'
+    ],
+    basketball: [
+      ',player_points_alternate'
+    ]
+  }
+
   // const navigate = useNavigate()
 
   // const handleLogout = () => {
@@ -114,6 +123,7 @@ function App() {
               reset={reset}
               includeAlts={includeAlts}
               setIncludeAlts={setIncludeAlts}
+              alts={alts}
               // fetchEvents={fetchEvents}
               />
           } 
