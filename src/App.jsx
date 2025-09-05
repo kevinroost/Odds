@@ -48,10 +48,21 @@ function App() {
 
 
   const testMode = false
+  const sport = 'football'
 
   const alts = {
     football: [
-      ',player_assists_alternate,player_pass_tds_alternate,player_pass_yds_alternate,player_reception_tds_alternate,player_reception_yds_alternate,player_rush_reception_yds_alternate,player_rush_tds_alternate,player_rush_yds_alternate'
+      ',player_pass_attempts_alternate' +
+      ',player_pass_completions_alternate' +
+      ',player_pass_interceptions_alternate' +
+      ',player_pass_tds_alternate' +
+      ',player_pass_yds_alternate' +
+      ',player_receptions_alternate' +
+      ',player_reception_tds_alternate' +
+      ',player_reception_yds_alternate' +
+      ',player_rush_tds_alternate' +
+      ',player_rush_yds_alternate' +
+      ',player_rush_attempts_alternate'
     ],
     basketball: [
       ',player_points_alternate'
@@ -107,7 +118,6 @@ function App() {
               today={today}
               setToday={setToday}
               testData={testData}
-              testMode={testMode}
               events={events}
               setEvents={setEvents}
               bms={bms}
@@ -125,6 +135,8 @@ function App() {
               setIncludeAlts={setIncludeAlts}
               alts={alts}
               // fetchEvents={fetchEvents}
+              testMode={testMode}
+              sport={sport}
               />
           } 
           />

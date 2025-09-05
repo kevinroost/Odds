@@ -1,58 +1,100 @@
 const formatConversion = {
-  stats: {
-    'player_points_alternate': 'Points',
-    'player_points': 'Points',
-    'player_rebounds': 'Rebounds',
-    'player_assists': 'Assists',
-    'player_threes': 'Three Pointers',
-    'player_blocks': 'Blocks',
-    'player_steals': 'Steals',
-    'player_turnovers': 'Turnovers',
-    'player_pass_tds': 'Touchdown Pass'
+  basketball: {
+    stats: {
+      'player_points_alternate': 'Points',
+      'player_points': 'Points',
+      'player_rebounds': 'Rebounds',
+      'player_assists': 'Assists',
+      'player_threes': 'Three Pointers',
+      'player_blocks': 'Blocks',
+      'player_steals': 'Steals',
+      'player_turnovers': 'Turnovers',
+      'player_pass_tds': 'Touchdown Pass'
+    },
+    players: {
+      'A.J. Green':'AJ Green',
+      'Alex Sarr':'Alexandre Sarr',
+      'Alperen Sengun':'Alperen Sengün',
+      'Andre Jackson Jr':'Andre Jackson Jr.',
+      'B.J. Boston Jr':'Brandon Boston Jr.',
+      'Bruce Brown Jr':'Bruce Brown',	
+      'C.J. McCollum':'CJ McCollum',
+      'Derrick Jones':'Derrick Jones Jr.',
+      'Gary Trent Jr':'Gary Trent Jr.',
+      'G.G. Jackson':'Gregory Jackson',
+      'Herb Jones':'Herbert Jones',
+      'Isaiah Stewart II':'Isaiah Stewart',
+      'Jabari Smith Jr':'Jabari Smith Jr.',
+      'Jaime Jaquez Jr':'Jaime Jaquez Jr.',
+      'Jaren Jackson Jr':'Jaren Jackson Jr.',
+      'K.J. Martin':'KJ Martin',
+      'Kelly Oubre Jr':'Kelly Oubre Jr.',
+      'Larry Nance Jr':'Larry Nance Jr.',
+      'Michael Porter Jr':'Michael Porter Jr.',
+      'Moe Wagner':'Moritz Wagner',
+      'Nick Smith Jr':'Nick Smith Jr.',
+      'Nicolas Claxton':'Nic Claxton',
+      'P.J. Washington':'PJ Washington',
+      'R.J. Barrett':'RJ Barrett',
+      'Ron Holland':'Ronald Holland II',	
+      'Scotty Pippen Jr':'Scotty Pippen Jr.',
+      'Tim Hardaway Jr':'Tim Hardaway Jr.',
+      'Wendell Carter Jr':'Wendell Carter Jr.',
+    }
   },
-  players: {
-    'A.J. Green':'AJ Green',
-    'Alex Sarr':'Alexandre Sarr',
-    'Alperen Sengun':'Alperen Sengün',
-    'Andre Jackson Jr':'Andre Jackson Jr.',
-    'B.J. Boston Jr':'Brandon Boston Jr.',
-    'Bruce Brown Jr':'Bruce Brown',	
-    'C.J. McCollum':'CJ McCollum',
-    'Derrick Jones':'Derrick Jones Jr.',
-    'Gary Trent Jr':'Gary Trent Jr.',
-    'G.G. Jackson':'Gregory Jackson',
-    'Herb Jones':'Herbert Jones',
-    'Isaiah Stewart II':'Isaiah Stewart',
-    'Jabari Smith Jr':'Jabari Smith Jr.',
-    'Jaime Jaquez Jr':'Jaime Jaquez Jr.',
-    'Jaren Jackson Jr':'Jaren Jackson Jr.',
-    'K.J. Martin':'KJ Martin',
-    'Kelly Oubre Jr':'Kelly Oubre Jr.',
-    'Larry Nance Jr':'Larry Nance Jr.',
-    'Michael Porter Jr':'Michael Porter Jr.',
-    'Moe Wagner':'Moritz Wagner',
-    'Nick Smith Jr':'Nick Smith Jr.',
-    'Nicolas Claxton':'Nic Claxton',
-    'P.J. Washington':'PJ Washington',
-    'R.J. Barrett':'RJ Barrett',
-    'Ron Holland':'Ronald Holland II',	
-    'Scotty Pippen Jr':'Scotty Pippen Jr.',
-    'Tim Hardaway Jr':'Tim Hardaway Jr.',
-    'Wendell Carter Jr':'Wendell Carter Jr.',
+  football: {
+    stats: {
+      'player_pass_attempts':'Attempts',
+      'player_pass_attempts_alternate':'Attempts',
+      'player_pass_completions':'Completions',
+      'player_pass_completions_alternate':'Completions',
+      'player_pass_interceptions':'Pass INTs',
+      'player_pass_interceptions_alternate':'Pass INTs',
+      'player_pass_tds':'Pass TDs',
+      'player_pass_tds_alternate':'Pass TDs',
+      'player_pass_yds':'Pass Yards',
+      'player_pass_yds_alternate':'Pass Yards',
+      'player_receptions':'Receptions',
+      'player_receptions_alternate':'Receptions',
+      'player_reception_tds':'Receiving TDs',
+      'player_reception_tds_alternate':'Receiving TDs',
+      'player_reception_yds':'Receiving Yards',
+      'player_reception_yds_alternate':'Receiving Yards',
+      'player_rush_tds':'Rush TDs',
+      'player_rush_tds_alternate':'Rush TDs',
+      'player_rush_yds':'Rush Yards',
+      'player_rush_yds_alternate':'Rush Yards',
+      'player_rush_attempts':'Carries',
+      'player_rush_attempts_alternate':'Carries',
+    },
+    players: {
+
+    }
   }
 }
 
-function translate(myText, category) {
+function translate(myText, category, sport) {
   let yourText
-  if (category === 'stat') {
-    yourText = formatConversion.stats[myText] ? formatConversion.stats[myText] : myText
-  } else if (category === 'player') {
-    yourText = formatConversion.players[myText] ? formatConversion.players[myText] : myText
+  
+  if (sport === 'football') {
+    if (category === 'stat') {
+      yourText = formatConversion.football.stats[myText] ? formatConversion.football.stats[myText] : myText
+      
+    } else if (category === 'player') {
+      yourText = formatConversion.football.players[myText] ? formatConversion.football.players[myText] : myText
+    }
+  } else if (sport === 'basketball') {
+    if (category === 'stat') {
+      yourText = formatConversion.basketball.stats[myText] ? formatConversion.basketball.stats[myText] : myText
+    } else if (category === 'player') {
+      yourText = formatConversion.basketball.players[myText] ? formatConversion.basketball.players[myText] : myText
+    }
   }
+  console.log(yourText);
   return yourText
 }
 
-const deconstructEventObj = (eventObj) => {
+const deconstructEventObj = (eventObj, sport) => {
   let resultStr = ''
   eventObj.bookmakers.forEach((bm) => {
     bm.markets.forEach((market) => {
@@ -60,11 +102,11 @@ const deconstructEventObj = (eventObj) => {
         let outcomeArr = []
         Object.keys(outcome).map((i) => {
           const newValue = i === 'description' ? 
-            translate(outcome[i], 'player') + `,${eventObj.away_team} @ ${eventObj.home_team}` : 
-            outcome[i]
+          translate(outcome[i], 'player', sport) + `,${eventObj.away_team} @ ${eventObj.home_team}` : 
+          outcome[i]
           outcomeArr.push(newValue)
         })
-        resultStr = resultStr + `${bm.title},` + `${translate(market.key, 'stat')},` + outcomeArr.join(',') + (market.key === 'player_points_alternate' ? ',alt' : ',standard') + '\n'
+        resultStr = resultStr + `${bm.title},` + `${translate(market.key, 'stat', sport)},` + outcomeArr.join(',') + (market.key.includes('alternate') ? ',alt' : ',standard') + '\n'
       })
     })
   })

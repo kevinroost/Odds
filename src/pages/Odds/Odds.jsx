@@ -18,7 +18,6 @@ const Odds = (
   {
     events, 
     setEvents, 
-    testMode, 
     setFinalString, 
     targetEvents, 
     setTargetEvents, 
@@ -31,7 +30,9 @@ const Odds = (
     setDesiredBms,
     includeAlts,
     setIncludeAlts,
-    alts
+    alts,
+    testMode, 
+    sport
   }) => {
   // const [sports, setSports] = useState([])
   const [loadingProps, setLoadingProps] = useState(false)
@@ -47,27 +48,27 @@ const Odds = (
       'player_turnovers'
     ],
     football: [
-      'player_assists',
       'player_pass_attempts',
       'player_pass_completions',
       'player_pass_interceptions',
-      'player_pass_longest_completion',
       'player_pass_tds',
       'player_pass_yds',
       'player_receptions',
-      'player_reception_longest',
       'player_reception_tds',
       'player_reception_yds',
-      'player_rush_attempts',
-      'player_rush_longest',
-      'player_rush_reception_yds',
       'player_rush_tds',
       'player_rush_yds',
-      'player_sacks',
-      'player_tds_over',
-      'player_1st_td',
-      'player_anytime_td',
-      'player_last_td'
+      'player_rush_attempts',
+      // 'player_assists',
+      // 'player_pass_longest_completion',
+      // 'player_reception_longest',
+      // 'player_rush_longest',
+      // 'player_rush_reception_yds',
+      // 'player_sacks',
+      // 'player_tds_over',
+      // 'player_1st_td',
+      // 'player_anytime_td',
+      // 'player_last_td'
     ]
   }
 
@@ -94,7 +95,7 @@ const Odds = (
   const createString = () => {
     let result = ''
     predictions.resArr.forEach((pre) => {
-      result = result.concat('', `${deconstructCSV(pre)}`)
+      result = result.concat('', `${deconstructCSV(pre, sport)}`)
     })
     console.log('FINAL',result);
     setFinalString(result)
