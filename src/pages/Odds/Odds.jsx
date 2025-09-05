@@ -79,8 +79,6 @@ const Odds = (
       const propsData = await oddsService.getPlayerProps(eventIdArr, markets, bms, includeAlts, alts.football)
       setPredictions(propsData)
       setLoadingProps(false)
-      console.log(propsData);
-      
     }
     
     if (!testMode) {

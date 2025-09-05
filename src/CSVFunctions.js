@@ -75,7 +75,6 @@ const formatConversion = {
 
 function translate(myText, category, sport) {
   let yourText
-  
   if (sport === 'football') {
     if (category === 'stat') {
       yourText = formatConversion.football.stats[myText] ? formatConversion.football.stats[myText] : myText
@@ -90,7 +89,6 @@ function translate(myText, category, sport) {
       yourText = formatConversion.basketball.players[myText] ? formatConversion.basketball.players[myText] : myText
     }
   }
-  console.log(yourText);
   return yourText
 }
 

@@ -69,8 +69,6 @@ async function getPlayerProps(eventIdArr, markets, bms, includeAlts, alts) {
       resObj.status = res.status
       resObj.remainingRequests = res.headers.get("x-requests-remaining")
       const json = await res.json()
-      console.log(json);
-      
       resObj.resArr.push(json)
       //break loop if the request is bad
       if (res.status === 401) return resObj
