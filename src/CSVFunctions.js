@@ -68,7 +68,10 @@ const formatConversion = {
       'player_rush_attempts_alternate':'Carries',
     },
     players: {
-
+      'Amon-Ra St. Brown':'Amon-Ra St Brown',
+      'Travis Etienne Jr.':'Travis Etienne',
+      'Brian Thomas Jr':'Brian Thomas',
+      'Tyrone Tracy Jr.':'Tyrone Tracy',
     }
   }
 }

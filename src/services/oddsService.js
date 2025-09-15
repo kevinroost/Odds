@@ -34,17 +34,16 @@ async function getSports() {
 }
 
 async function getEvents(today) {
-  var end = new Date();
-  end.setHours(23,59,59);
+  const now = new Date();
+  const end = new Date(now.setHours(23,59,59))
+  const threeDays = new Date(end.setDate(end.getDate() + 3));
   //&commenceTimeTo=${end.toISOString().slice(0, -5)+'Z'}
-  const commencementFilter = today?`&commenceTimeTo=${end.toISOString().slice(0, -5)+'Z'}`:``
+  const commencementFilter = today?`&commenceTimeTo=${threeDays.toISOString().slice(0, -5)+'Z'}`:``
   try {
     const res = await fetch(`${BASE_URL}/sports/americanfootball_nfl/events?apiKey=${apiKey}` + `${commencementFilter}`, {
       headers: { 'Content-Type': 'application/json' }
     })
     const json = await res.json()
-    console.log('json', json);
-    
     if (json.err) throw new Error(json.err)
       return json
   } catch (err) {
@@ -60,8 +59,6 @@ async function getPlayerProps(eventIdArr, markets, bms, includeAlts, alts) {
       remainingRequests: 0
     }
     for (let i = 0; i < eventIdArr.length; i++) {
-      console.log(eventIdArr);
-      
       await delay(500)
       const res = await fetch(`${BASE_URL}/sports/americanfootball_nfl/events/${eventIdArr[i]}/odds?apiKey=${apiKey}&regions=us&markets=${markets.join(',')}${includeAlts?alts:''}&bookmakers=${bms.join(',')}`, {
         headers: { 'Content-Type': 'application/json' }
