@@ -108,7 +108,6 @@ const Odds = (
     link.click();
   }
 
-
   useEffect(() => {
 
     setTargetEvents(events.map((e) => {

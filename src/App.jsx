@@ -93,7 +93,7 @@ function App() {
       
       const fetchEvents = async () => {
         await reset()
-        const eventData = await oddsService.getEvents(today)
+        const eventData = await oddsService.getEvents(today, sport)
         setEvents(eventData)
       }
       await fetchEvents()

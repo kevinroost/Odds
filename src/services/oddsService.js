@@ -33,12 +33,12 @@ async function getSports() {
   }
 }
 
-async function getEvents(today) {
+async function getEvents(today, sport) {
   const now = new Date();
   const end = new Date(now.setHours(23,59,59))
-  const threeDays = new Date(end.setDate(end.getDate() + 3));
-  //&commenceTimeTo=${end.toISOString().slice(0, -5)+'Z'}
-  const commencementFilter = today?`&commenceTimeTo=${threeDays.toISOString().slice(0, -5)+'Z'}`:``
+  const nextMonday = new Date(now.setDate(now.getDate() + (1 + 7 - now.getDay()) % 7))
+  const targetEndDate = sport === 'football' ? nextMonday : end
+  const commencementFilter = today?`&commenceTimeTo=${targetEndDate.toISOString().slice(0, -5)+'Z'}`:``
   try {
     const res = await fetch(`${BASE_URL}/sports/americanfootball_nfl/events?apiKey=${apiKey}` + `${commencementFilter}`, {
       headers: { 'Content-Type': 'application/json' }
