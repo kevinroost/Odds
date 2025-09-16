@@ -38,7 +38,7 @@ const Odds = (
   const [loadingProps, setLoadingProps] = useState(false)
 
   const markets = {
-    basketball: [
+    'basketball': [
       'player_points', 
       'player_rebounds', 
       'player_assists', 
@@ -47,7 +47,7 @@ const Odds = (
       'player_steals', 
       'player_turnovers'
     ],
-    football: [
+    'football': [
       'player_pass_attempts',
       'player_pass_completions',
       'player_pass_interceptions',
@@ -76,14 +76,14 @@ const Odds = (
   const getProps = () => {
     const fetchProps = async (eventIdArr, markets, bms) => {
       await setLoadingProps(true)
-      const propsData = await oddsService.getPlayerProps(eventIdArr, markets, bms, includeAlts, alts.football)
+      const propsData = await oddsService.getPlayerProps(eventIdArr, markets, bms, includeAlts, alts[sport])
       setPredictions(propsData)
       setLoadingProps(false)
     }
     
     if (!testMode) {
       if (targetEvents.length > 0) {
-        fetchProps(targetEvents, markets.football, desiredBms)
+        fetchProps(targetEvents, markets[sport], desiredBms)
       }
     } else {
       setPredictions(events)

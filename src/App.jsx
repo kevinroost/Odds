@@ -51,7 +51,7 @@ function App() {
   const sport = 'football'
 
   const alts = {
-    football: [
+    'football': [
       ',player_pass_attempts_alternate' +
       ',player_pass_completions_alternate' +
       ',player_pass_interceptions_alternate' +
@@ -64,7 +64,7 @@ function App() {
       ',player_rush_yds_alternate' +
       ',player_rush_attempts_alternate'
     ],
-    basketball: [
+    'basketball': [
       ',player_points_alternate'
     ]
   }

@@ -1,6 +1,6 @@
 const formatConversion = {
-  basketball: {
-    stats: {
+  'basketball': {
+    'stats': {
       'player_points_alternate': 'Points',
       'player_points': 'Points',
       'player_rebounds': 'Rebounds',
@@ -11,7 +11,7 @@ const formatConversion = {
       'player_turnovers': 'Turnovers',
       'player_pass_tds': 'Touchdown Pass'
     },
-    players: {
+    'players': {
       'A.J. Green':'AJ Green',
       'Alex Sarr':'Alexandre Sarr',
       'Alperen Sengun':'Alperen Sengün',
@@ -42,8 +42,8 @@ const formatConversion = {
       'Wendell Carter Jr':'Wendell Carter Jr.',
     }
   },
-  football: {
-    stats: {
+  'football': {
+    'stats': {
       'player_pass_attempts':'Attempts',
       'player_pass_attempts_alternate':'Attempts',
       'player_pass_completions':'Completions',
@@ -67,7 +67,7 @@ const formatConversion = {
       'player_rush_attempts':'Carries',
       'player_rush_attempts_alternate':'Carries',
     },
-    players: {
+    'players': {
       'Amon-Ra St. Brown':'Amon-Ra St Brown',
       'Travis Etienne Jr.':'Travis Etienne',
       'Brian Thomas Jr':'Brian Thomas',
@@ -78,20 +78,7 @@ const formatConversion = {
 
 function translate(myText, category, sport) {
   let yourText
-  if (sport === 'football') {
-    if (category === 'stat') {
-      yourText = formatConversion.football.stats[myText] ? formatConversion.football.stats[myText] : myText
-      
-    } else if (category === 'player') {
-      yourText = formatConversion.football.players[myText] ? formatConversion.football.players[myText] : myText
-    }
-  } else if (sport === 'basketball') {
-    if (category === 'stat') {
-      yourText = formatConversion.basketball.stats[myText] ? formatConversion.basketball.stats[myText] : myText
-    } else if (category === 'player') {
-      yourText = formatConversion.basketball.players[myText] ? formatConversion.basketball.players[myText] : myText
-    }
-  }
+  yourText = formatConversion[sport][category][myText] ? formatConversion[sport][category][myText] : myText
   return yourText
 }
 
@@ -103,11 +90,11 @@ const deconstructEventObj = (eventObj, sport) => {
         let outcomeArr = []
         Object.keys(outcome).map((i) => {
           const newValue = i === 'description' ? 
-          translate(outcome[i], 'player', sport) + `,${eventObj.away_team} @ ${eventObj.home_team}` : 
+          translate(outcome[i], 'players', sport) + `,${eventObj.away_team} @ ${eventObj.home_team}` : 
           outcome[i]
           outcomeArr.push(newValue)
         })
-        resultStr = resultStr + `${bm.title},` + `${translate(market.key, 'stat', sport)},` + outcomeArr.join(',') + (market.key.includes('alternate') ? ',alt' : ',standard') + '\n'
+        resultStr = resultStr + `${bm.title},` + `${translate(market.key, 'stats', sport)},` + outcomeArr.join(',') + (market.key.includes('alternate') ? ',alt' : ',standard') + '\n'
       })
     })
   })
