@@ -72,6 +72,21 @@ const formatConversion = {
       'Travis Etienne Jr.':'Travis Etienne',
       'Brian Thomas Jr':'Brian Thomas',
       'Tyrone Tracy Jr.':'Tyrone Tracy',
+      'Michael Penix Jr.':'Michael Penix',
+      'Harold Fannin Jr.':'Harold Fannin',
+      'Oronde Gadsden II':'Oronde Gadsden',
+      "Tre Harris":"Tre' Harris",
+      'Ray-Ray McCloud III':'Ray-Ray McCloud',
+      'Deebo Samuel Sr.':'Deebo Samuel',
+      'Chris Rodriguez Jr.':'Chris Rodriguez',
+      'C.J. Stroud':'CJ Stroud',
+      'Cam Ward':'Cameron Ward',
+      'Chigoziem Okonkwo':'Chig Okonkwo',
+      'Michael Pittman Jr.':'Michael Pittman',
+      'Brian Robinson Jr.':'Brian Robinson',
+      "Dont'e Thornton Jr.":"Dont'e Thornton",
+      'Luther Burden III':'Luther Burden',
+      'T.J. Hockenson':'TJ Hockenson',
     }
   }
 }

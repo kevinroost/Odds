@@ -4,8 +4,6 @@ import * as oddsService from '../../services/oddsService'
 
 import { deconstructCSV } from '../../CSVFunctions'
 
-import testData from '../../data/testData'
-
 import './Odds.css'
 
 // components
