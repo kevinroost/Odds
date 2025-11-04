@@ -52,6 +52,7 @@ async function getEvents(today, sport) {
 }
 
 async function getPlayerProps(eventIdArr, markets, bms, includeAlts, alts) {
+  
   try {
     const resObj = {
       status: null,

@@ -113,7 +113,6 @@ const Odds = (
     }))
     
   }, [events, setTargetEvents])
-
   
   return (
     <main>

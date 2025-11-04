@@ -87,6 +87,12 @@ const formatConversion = {
       "Dont'e Thornton Jr.":"Dont'e Thornton",
       'Luther Burden III':'Luther Burden',
       'T.J. Hockenson':'TJ Hockenson',
+      'Calvin Austin III':'Calvin Austin',
+      'Kenneth Walker III':'Kenneth Walker',
+      'J.K. Dobbins':'JK Dobbins',
+      'J.J. McCarthy':'JJ McCarthy',
+      'Zonovan Knight':'Bam Knight',
+      'Marvin Harrison Jr.':'Marvin Harrison',
     }
   }
 }
