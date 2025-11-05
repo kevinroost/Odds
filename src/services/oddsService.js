@@ -38,10 +38,9 @@ async function getEvents(today, sport) {
   const end = new Date(now.setHours(23,59,59))
   const nextMonday = new Date(now.setDate(now.getDate() + (1 + 7 - now.getDay()) % 7))
   const targetEndDate = sport === 'football' ? nextMonday : end
-  const apiStringSport = sport === 'football' ? 'americanfootball_nfl' : 'basketball_nba'
   const commencementFilter = today?`&commenceTimeTo=${targetEndDate.toISOString().slice(0, -5)+'Z'}`:``
   try {
-    const res = await fetch(`${BASE_URL}/sports/${apiStringSport}/events?apiKey=${apiKey}` + `${commencementFilter}`, {
+    const res = await fetch(`${BASE_URL}/sports/${sport}/events?apiKey=${apiKey}` + `${commencementFilter}`, {
       headers: { 'Content-Type': 'application/json' }
     })
     const json = await res.json()
@@ -53,7 +52,8 @@ async function getEvents(today, sport) {
 }
 
 async function getPlayerProps(eventIdArr, markets, bms, includeAlts, alts, sport) {
-  const apiStringSport = sport === 'football' ? 'americanfootball_nfl' : 'basketball_nba'
+
+  
   try {
     const resObj = {
       status: null,
@@ -62,7 +62,7 @@ async function getPlayerProps(eventIdArr, markets, bms, includeAlts, alts, sport
     }
     for (let i = 0; i < eventIdArr.length; i++) {
       await delay(500)
-      const res = await fetch(`${BASE_URL}/sports/${apiStringSport}/events/${eventIdArr[i]}/odds?apiKey=${apiKey}&regions=us&markets=${markets.join(',')}${includeAlts?alts:''}&bookmakers=${bms.join(',')}`, {
+      const res = await fetch(`${BASE_URL}/sports/${sport}/events/${eventIdArr[i]}/odds?apiKey=${apiKey}&regions=us&markets=${markets.join(',')}${includeAlts?alts:''}&bookmakers=${bms.join(',')}`, {
         headers: { 'Content-Type': 'application/json' }
       })
       resObj.status = res.status

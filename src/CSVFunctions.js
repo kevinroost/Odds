@@ -1,5 +1,5 @@
 const formatConversion = {
-  'basketball': {
+  'basketball_nba': {
     'stats': {
       'player_points_alternate': 'Points',
       'player_points': 'Points',
@@ -42,7 +42,7 @@ const formatConversion = {
       'Wendell Carter Jr':'Wendell Carter Jr.',
     }
   },
-  'football': {
+  'americanfootball_nfl': {
     'stats': {
       'player_pass_attempts':'Attempts',
       'player_pass_attempts_alternate':'Attempts',

@@ -45,10 +45,10 @@ function App() {
   const [predictions, setPredictions] = useState({status: 999, resArr: [], remainingRequests: 0})
   const [today, setToday] = useState(true)
   const [includeAlts, setIncludeAlts] = useState(true)
+  const [sport, setSport] = useState('basketball_nba')
 
 
   const testMode = false
-  const sport = 'basketball'
 
   const alts = {
     'football': [
@@ -101,7 +101,7 @@ function App() {
     } else {
       await setEvents(testData)
     }  
-  }, [testMode, today])
+  }, [testMode, today, sport])
 
   useEffect(() => {
     getEvents()
@@ -137,6 +137,7 @@ function App() {
               // fetchEvents={fetchEvents}
               testMode={testMode}
               sport={sport}
+              setSport={setSport}
               />
           } 
           />

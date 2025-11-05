@@ -30,13 +30,14 @@ const Odds = (
     setIncludeAlts,
     alts,
     testMode, 
-    sport
+    sport, 
+    setSport
   }) => {
   // const [sports, setSports] = useState([])
   const [loadingProps, setLoadingProps] = useState(false)
 
   const markets = {
-    'basketball': [
+    'basketball_nba': [
       'player_points', 
       'player_rebounds', 
       'player_assists', 
@@ -45,7 +46,7 @@ const Odds = (
       'player_steals', 
       'player_turnovers'
     ],
-    'football': [
+    'americanfootball_nfl': [
       'player_pass_attempts',
       'player_pass_completions',
       'player_pass_interceptions',
@@ -73,6 +74,8 @@ const Odds = (
   
   const getProps = () => {
     const fetchProps = async (eventIdArr, markets, bms) => {
+      console.log(markets);
+      
       await setLoadingProps(true)
       const propsData = await oddsService.getPlayerProps(eventIdArr, markets, bms, includeAlts, alts[sport], sport)
       setPredictions(propsData)
@@ -119,7 +122,16 @@ const Odds = (
       <h1>HI MITCHELL AND HUFF</h1>
       <section className='flex-row'>
         <section className='option'>
-          <h3><span>1. </span> SELECT EVENTS</h3>
+          <h3><span>1. </span> SELECT SPORT</h3>
+          <h3>
+            <button style={{border: (sport === 'basketball_nba'?'rgb(79, 130, 251) solid 3px':'none')}} onClick={() => setSport('basketball_nba')}>Basketball</button>
+          </h3>
+          <h3>
+            <button style={{border: (sport === 'americanfootball_nfl'?'rgb(79, 130, 251) solid 3px':'none')}} onClick={() => setSport('americanfootball_nfl')}>Football</button>
+          </h3>
+        </section>
+        <section className='option'>
+          <h3><span>2. </span> SELECT EVENTS</h3>
           <h3>
             <button style={{border: (today?'rgb(79, 130, 251) solid 3px':'none')}} onClick={() => setToday(true)}>TODAY'S EVENTS</button>
             <button style={{border: (!today?'rgb(79, 130, 251) solid 3px':'none')}} onClick={() => setToday(false)}>ALL EVENTS</button>
@@ -143,7 +155,7 @@ const Odds = (
         </section>
 
         <section className='option'>
-          <h3><span>2. </span> SELECT BOOKMAKERS</h3>
+          <h3><span>3. </span> SELECT BOOKMAKERS</h3>
           <h3>
             <button onClick={() => setDesiredBms(bms)}>SELECT ALL</button>
             <button onClick={() => setDesiredBms([])}>DESELECT ALL</button>
@@ -164,7 +176,7 @@ const Odds = (
         <AltCheckbox includeAlts={includeAlts} setIncludeAlts={setIncludeAlts}/>
       </div>
       <div className='check-box-option'>
-        <h3>4. </h3> <button onClick={() => getProps()}>FETCH PROPS</button>
+        <h3>5. </h3> <button onClick={() => getProps()}>FETCH PROPS</button>
       </div>
       
       {
