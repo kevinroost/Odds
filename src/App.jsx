@@ -48,7 +48,7 @@ function App() {
 
 
   const testMode = false
-  const sport = 'football'
+  const sport = 'basketball'
 
   const alts = {
     'football': [

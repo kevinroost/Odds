@@ -74,7 +74,7 @@ const Odds = (
   const getProps = () => {
     const fetchProps = async (eventIdArr, markets, bms) => {
       await setLoadingProps(true)
-      const propsData = await oddsService.getPlayerProps(eventIdArr, markets, bms, includeAlts, alts[sport])
+      const propsData = await oddsService.getPlayerProps(eventIdArr, markets, bms, includeAlts, alts[sport], sport)
       setPredictions(propsData)
       setLoadingProps(false)
     }
