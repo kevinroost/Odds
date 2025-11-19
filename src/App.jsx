@@ -51,7 +51,7 @@ function App() {
   const testMode = false
 
   const alts = {
-    'football': [
+    'americanfootball_nfl': [
       ',player_pass_attempts_alternate' +
       ',player_pass_completions_alternate' +
       ',player_pass_interceptions_alternate' +
@@ -64,7 +64,7 @@ function App() {
       ',player_rush_yds_alternate' +
       ',player_rush_attempts_alternate'
     ],
-    'basketball': [
+    'basketball_nba': [
       ',player_points_alternate'
     ]
   }

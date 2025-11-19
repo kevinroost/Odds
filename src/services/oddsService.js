@@ -37,7 +37,8 @@ async function getEvents(today, sport) {
   const now = new Date();
   const end = new Date(now.setHours(23,59,59))
   const nextMonday = new Date(now.setDate(now.getDate() + (1 + 7 - now.getDay()) % 7))
-  const targetEndDate = sport === 'football' ? nextMonday : end
+  
+  const targetEndDate = sport === 'americanfootball_nfl' ? nextMonday : end
   const commencementFilter = today?`&commenceTimeTo=${targetEndDate.toISOString().slice(0, -5)+'Z'}`:``
   try {
     const res = await fetch(`${BASE_URL}/sports/${sport}/events?apiKey=${apiKey}` + `${commencementFilter}`, {
@@ -45,6 +46,7 @@ async function getEvents(today, sport) {
     })
     const json = await res.json()
     if (json.err) throw new Error(json.err)
+      console.log(targetEndDate);
       return json
   } catch (err) {
     throw new Error(err)
