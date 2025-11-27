@@ -5,7 +5,7 @@ const formatConversion = {
       'player_points': 'Points',
       'player_rebounds': 'Rebounds',
       'player_assists': 'Assists',
-      'player_threes': 'Three Pointers',
+      'player_threes': 'Three Pointers Made',
       'player_blocks': 'Blocks',
       'player_steals': 'Steals',
       'player_turnovers': 'Turnovers',
@@ -40,6 +40,11 @@ const formatConversion = {
       'Scotty Pippen Jr':'Scotty Pippen Jr.',
       'Tim Hardaway Jr':'Tim Hardaway Jr.',
       'Wendell Carter Jr':'Wendell Carter Jr.',
+      "Ja'Kobe Walter":`JaKobe Walter`,
+      "Kel'el Ware":`Kelel Ware`,
+      'Vincent Williams Jr':'Vince Williams Jr.',
+      "Royce O'Neale":'Royce ONeale',
+      "De'Aaron Fox":'DeAaron Fox',
     }
   },
   'americanfootball_nfl': {
